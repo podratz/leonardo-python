@@ -1,15 +1,47 @@
 import math
 
-def make_geometric_sequence(common_ratio: int | float):
-    def geometric_sequence(n: int = 1, scale_factor: int | float = 1):
-        return scale_factor * (common_ratio ** n)
-    return geometric_sequence
 
-golden_ratio = (1 + math.sqrt(5)) / 2
-golden_sequence = make_geometric_sequence(golden_ratio)
+class GeometricSequence:
 
-silver_ratio = (2 + math.sqrt(8)) / 2
-silver_sequence = make_geometric_sequence(silver_ratio)
+    def __init__(self, common_ratio: int | float, scale_factor: int | float = 1):
+        self.common_ratio = common_ratio
+        self.scale_factor = scale_factor
+
+    def __call__(self, n = 1): 
+        return self.scale_factor * (self.common_ratio ** n)
+
+    def __getitem__(self, subscript):
+        if isinstance(subscript, int):
+            return self(subscript)
+
+        if subscript.start == None:
+            raise KeyError('sequence requires pre-determined start')
+        start = subscript.start
+
+        if subscript.stop == None and subscript.step:
+            raise KeyError('sequence with step needs pre-determined stop')
+        stop = subscript.stop
+
+        if subscript.step == 0:
+            raise ValueError('slice step cannot be zero')
+        step = subscript.step or 1
+
+        return [ self(index) for index in range(start, stop, step) ]
+
 
 bronce_ratio = (3 + math.sqrt(13)) / 2
-bronce_sequence = make_geometric_sequence(bronce_ratio)
+class BronceSequence(GeometricSequence):
+    def __init__(self, scale_factor: int | float = 1):
+        super().__init__(bronce_ratio, scale_factor=scale_factor)
+
+
+silver_ratio = (2 + math.sqrt(8)) / 2
+class SilverSequence(GeometricSequence):
+    def __init__(self, scale_factor: int | float = 1):
+        super().__init__(silver_ratio, scale_factor=scale_factor)
+
+
+golden_ratio = (1 + math.sqrt(5)) / 2
+class GoldenSequence(GeometricSequence):
+    def __init__(self, scale_factor: int | float = 1):
+        super().__init__(golden_ratio, scale_factor=scale_factor)
