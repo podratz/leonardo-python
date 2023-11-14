@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import math
 import argparse
+import itertools
 
 
 class GeometricSequence:
@@ -29,6 +30,10 @@ class GeometricSequence:
         step = subscript.step or 1
 
         return [ self(index) for index in range(start, stop, step) ]
+
+    def __iter__(self):
+        for index in itertools.count():
+            yield self(index)
 
 
 bronce_ratio = (3 + math.sqrt(13)) / 2
