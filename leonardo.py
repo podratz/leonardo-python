@@ -1,4 +1,6 @@
+#!/usr/bin/env python3
 import math
+import argparse
 
 
 class GeometricSequence:
@@ -10,9 +12,9 @@ class GeometricSequence:
     def __call__(self, n = 1): 
         return self.scale_factor * (self.common_ratio ** n)
 
-    def __getitem__(self, subscript):
+    def __getitem__(self, subscript) -> list[float]:
         if isinstance(subscript, int):
-            return self(subscript)
+            return [self(subscript)]
 
         if subscript.start == None:
             raise KeyError('sequence requires pre-determined start')
@@ -45,3 +47,59 @@ golden_ratio = (1 + math.sqrt(5)) / 2
 class GoldenSequence(GeometricSequence):
     def __init__(self, scale_factor: int | float = 1):
         super().__init__(golden_ratio, scale_factor=scale_factor)
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        prog='Leonardo',
+        description='Compute metallic means.',
+        epilog='by N. M. Podratz'
+    )
+    # positional argument
+    parser.add_argument(
+        'scale',
+        metavar='S',
+        nargs='?',
+        type=int,
+        default=1,
+        help='The scale factor'
+    )
+    #options
+    parser.add_argument(
+        '-m',
+        '--metal',
+        type=int,
+        help='The mean\'s metal',
+        default=GoldenSequence
+    )
+    parser.add_argument(
+        '-p',
+        '--prev',
+        type=int,
+        help='number of preceding values',
+        default=0
+    )
+    parser.add_argument(
+        '-n',
+        '--next',
+        type=int,
+        help='number of succeeding values',
+        default=0
+    )
+    args = parser.parse_args()
+    return args
+
+def main():
+    args = parse_args()
+    metal = args.metal  # assume Gold
+    scale_factor = args.scale or 1
+    start = -args.prev + 1
+    stop = args.next + 2
+    golden_numbers = GoldenSequence(scale_factor)
+    golden_strings = map(str, golden_numbers[start:stop])
+    output = '\n'.join(golden_strings)
+    print(output)
+
+
+if __name__ == '__main__':
+    main()
