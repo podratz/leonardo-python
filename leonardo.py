@@ -1,27 +1,26 @@
 #!/usr/bin/env python3
-import math
 import argparse
 import itertools
+import math
 
 
 class GeometricSequence:
-
-    def __init__(self, common_ratio: int | float, scale_factor: int | float = 1):
+    def __init__(self, common_ratio: float, scale_factor: float = 1):
         self.common_ratio = common_ratio
         self.scale_factor = scale_factor
 
-    def __call__(self, n = 1): 
+    def __call__(self, n: int = 1) -> float: 
         return self.scale_factor * (self.common_ratio ** n)
 
     def __getitem__(self, subscript) -> list[float]:
         if isinstance(subscript, int):
             return [self(subscript)]
 
-        if subscript.start == None:
+        if subscript.start is None:
             raise KeyError('sequence requires pre-determined start')
         start = subscript.start
 
-        if subscript.stop == None and subscript.step:
+        if subscript.stop is None and subscript.step is not None:
             raise KeyError('sequence with step needs pre-determined stop')
         stop = subscript.stop
 
@@ -29,7 +28,7 @@ class GeometricSequence:
             raise ValueError('slice step cannot be zero')
         step = subscript.step or 1
 
-        return [ self(index) for index in range(start, stop, step) ]
+        return [self(index) for index in range(start, stop, step)]
 
     def __iter__(self):
         for index in itertools.count():
