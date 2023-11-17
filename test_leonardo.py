@@ -24,3 +24,27 @@ class TestGoldenSequence(unittest.TestCase):
         self.assertNotEqual(g, g0)
         self.assertEqual(g, g1)
         self.assertNotEqual(g, g17)
+
+    def test_getitem(self):
+        g = GoldenSequence()
+
+        g_range_neg1 = [1/self.golden_ratio]
+        self.assertListEqual(g[-1], g_range_neg1)
+
+        g_range_0 = [1]
+        self.assertListEqual(g[0], g_range_0)
+
+        g_range_1 = [self.golden_ratio]
+        self.assertListEqual(g[1], g_range_1)
+
+        g_range_neg6_neg2 = [self.golden_ratio ** n  for n in range(-6,-2)]
+        self.assertListEqual(g[-6:-2], g_range_neg6_neg2)
+
+        g_range_neg2_3 = [self.golden_ratio ** n  for n in range(-2,3)]
+        self.assertListEqual(g[-2:3], g_range_neg2_3)
+
+        g_range_3_7 = [self.golden_ratio ** n  for n in range(3,7)]
+        self.assertListEqual(g[3:7], g_range_3_7)
+
+        g_range_2_neg3_neg1 = [self.golden_ratio ** n  for n in range(2,-3,-1)]
+        self.assertListEqual(g[2:-3:-1], g_range_2_neg3_neg1)
