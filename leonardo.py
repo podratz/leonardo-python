@@ -18,11 +18,11 @@ class GeometricSequence:
             return [self(subscript)]
 
         if subscript.start is None:
-            raise KeyError('sequence requires pre-determined start')
+            raise TypeError('sequence requires pre-determined start')
         start = subscript.start
 
-        if subscript.stop is None and subscript.step is not None:
-            raise KeyError('sequence with step needs pre-determined stop')
+        if subscript.step is not None and subscript.stop is None:
+            raise TypeError('sequence with step needs pre-determined stop')
         stop = subscript.stop
 
         if subscript.step == 0:
