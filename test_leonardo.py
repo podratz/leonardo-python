@@ -49,5 +49,12 @@ class TestGoldenSequence(unittest.TestCase):
         g_range_2_neg3_neg1 = [self.golden_ratio ** n  for n in range(2,-3,-1)]
         self.assertListEqual(g[2:-3:-1], g_range_2_neg3_neg1)
 
+        self.assertRaises(KeyError, GoldenSequence.__getitem__, g, slice(None, 5, 1))
+
+        self.assertRaises(KeyError, GoldenSequence.__getitem__, g, slice(2, None, 1))
+
+        self.assertRaises(ValueError, GoldenSequence.__getitem__, g, slice(2, 5, 0))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+from types import NotImplementedType
 import argparse
 import itertools
 import math
-from types import NotImplementedType
 
 
 class GeometricSequence:
