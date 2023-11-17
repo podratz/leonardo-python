@@ -2,6 +2,7 @@
 import argparse
 import itertools
 import math
+from types import NotImplementedType
 
 
 class GeometricSequence:
@@ -33,6 +34,12 @@ class GeometricSequence:
     def __iter__(self):
         for index in itertools.count():
             yield self(index)
+
+    def __eq__(self, other: object) -> NotImplementedType | bool:
+        if not isinstance(other, GeometricSequence):
+            return NotImplemented
+        return (self.common_ratio == other.common_ratio
+            and self.scale_factor == other.scale_factor)
 
 
 bronce_ratio = (3 + math.sqrt(13)) / 2
