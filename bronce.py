@@ -1,6 +1,6 @@
 import math
 
-from leonardo import GeometricSequence
+from .geometric_sequence import GeometricSequence
 
 
 class Bronce:
