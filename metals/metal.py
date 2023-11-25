@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from utils.geometric_sequence import GeometricSequence
+from ..utils.geometric_sequence import GeometricSequence
 
 
 class Metal(ABC):
