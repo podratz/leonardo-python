@@ -1,6 +1,6 @@
 import argparse
 
-from .gold import Gold
+from .metals.gold import Gold
 
 
 def parse_args():
