@@ -1,9 +1,8 @@
 import math
 import unittest
 
-from geometric_sequence import GeometricSequence
-
-from .metals.gold import Gold
+from metals.gold import Gold
+from utils.geometric_sequence import GeometricSequence
 
 
 class TestGoldSequence(unittest.TestCase):
