@@ -19,6 +19,10 @@ class Metal(ABC):
     def __getitem__(self, subscript) -> list[float]:
         return type(self).sequence(scale_factor=self._scale_factor)[subscript]
 
+    def __call__(self, n: int = 1) -> float:
+        [item] = self[n]
+        return item
+
     @classmethod
     def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
         """A series of numbers following the metallic ratio in growth."""
