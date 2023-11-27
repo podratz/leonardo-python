@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from types import NotImplementedType
 
 from ..utils.geometric_sequence import GeometricSequence
 
@@ -27,6 +28,14 @@ class Metal(ABC):
     def __call__(self, n: int = 1) -> float:
         [item] = self[n]
         return item
+
+    def __eq__(self, other: object) -> NotImplementedType | bool:
+        if not isinstance(other, Metal):
+            return NotImplemented
+        return (
+            type(self).ratio == type(other).ratio
+            and self._scale_factor == other._scale_factor
+        )
 
     def __repr__(self) -> str:
         cls = self.__class__
