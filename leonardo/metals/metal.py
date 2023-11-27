@@ -27,3 +27,7 @@ class Metal(ABC):
     def __call__(self, n: int = 1) -> float:
         [item] = self[n]
         return item
+
+    def __repr__(self) -> str:
+        cls = self.__class__
+        return "{}({})".format(cls.__name__, self._scale_factor)
