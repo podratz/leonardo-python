@@ -1,3 +1,4 @@
+import math
 from abc import ABC, abstractmethod
 from functools import total_ordering
 from types import NotImplementedType
@@ -56,3 +57,20 @@ class Metal(ABC):
 
     def __str__(self) -> str:
         return str(self._scale_factor)
+
+    @classmethod
+    def angle(cls, *, degrees=False) -> float:
+        """Returns the metallic angle."""
+        return cls.degs if degrees else cls.rads
+
+    @classmethod
+    @property
+    def rads(cls) -> float:
+        """Returns the metallic angle in radians."""
+        return math.tau * (1 - 1 / cls.ratio)
+
+    @classmethod
+    @property
+    def degs(cls) -> float:
+        """Returns the metallic angle in degrees."""
+        return 360 * (1 - 1 / cls.ratio)
