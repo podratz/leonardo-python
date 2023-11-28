@@ -4,6 +4,7 @@ from functools import total_ordering
 from types import NotImplementedType
 from typing import Self
 
+from ..utils.angle_sequence import AngleSequence
 from ..utils.geometric_sequence import GeometricSequence
 
 
@@ -62,6 +63,13 @@ class Metal(ABC):
     def angle(cls, *, degrees=False) -> float:
         """Returns the metallic angle."""
         return cls.degs if degrees else cls.rads
+
+    @classmethod
+    def angle_sequence(cls, degrees=False, revolves=False) -> AngleSequence:
+        """An angle-sequence following the metallic ratio."""
+        return AngleSequence(
+            angle=cls.angle(degrees=degrees), degrees=degrees, revolves=revolves
+        )
 
     @classmethod
     @property
