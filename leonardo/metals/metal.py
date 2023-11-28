@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from functools import total_ordering
 from types import NotImplementedType
+from typing import Self
 
 from ..utils.geometric_sequence import GeometricSequence
 
@@ -30,6 +31,11 @@ class Metal(ABC):
     def __call__(self, n: int = 1) -> float:
         [item] = self[n]
         return item
+
+    def __next__(self) -> Self:
+        cls = type(self)
+        next = self()
+        return cls(next)
 
     def __eq__(self, other: object) -> NotImplementedType | bool:
         if not isinstance(other, Metal):
