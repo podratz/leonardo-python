@@ -4,45 +4,80 @@ A python library for working with the metallic means.
 
 ## Examples
 
-``` python
+### Working with Constants
 
-from leonardo import BronceSequence, SilverSequence, GoldenSequence
+```python
 
-# Construct the metallic sequences.
-bronce = BronceSequence()
-silver = SilverSequence()
-gold   = GoldenSequence()
+from leonardo import *
 
-# Get the metallic ratios.
-bronce()               # 3.302775637731995
-silver()               # 2.414213562373095
-gold()                 # 1.618033988749895 
 
-# Get 5 consecutive elements from a metallic sequence.
-gold[0:5]              # [1.0,
-                       #  1.618033988749895,
-                       #  2.618033988749895,
-                       #  4.23606797749979,
-                       #  6.854101966249686]
+Gold.ratio
+# 1.618033988749895
 
-# Given one size, compute aesthetically pleasing scalings.
-# E.g. font-sizes, proportions of buttons, ...
-gold = GoldenSequence(17)
-gold[-2:3]             # [6.4934221912517875,
-                       #  10.506577808748212,
-                       #  17.0,
-                       #  27.50657780874821,
-                       #  44.50657780874821]
+Silver.ratio
+# 2.414213562373095
 
-# To keep your namespace tidy, import with an alias.
-import leonardo as ld
-gold = ld.GoldenSequence()
-gold(4)                # 6.854101966249686
+Bronce.ratio
+# 3.302775637731995
 
-# If all you need is the metallic ratio itself, you can access
-# it directly without the overhead of an object construction.
-ld.bronce_ratio        # 3.302775637731995
-ld.silver_ratio        # 2.414213562373095
-ld.golden_ratio        # 1.618033988749895
+Gold.angle(degrees=True)
+# 137.50776405003788
+
+Gold.angle() # defaults to radians
+# 2.3999632297286535
 
 ```
+
+### Working with Geometric Sequences
+``` python
+
+from leonardo import Gold
+
+
+g = Gold() # g is a golden number
+
+g17 = Gold(17) # g17 is a scaled golden number
+
+g[-2:3] # prints the neighborhood of g
+# [0.38196601125010515,
+#  0.6180339887498948,
+#  1.0,
+#  1.618033988749895,
+#  2.618033988749895]
+
+# setting up fontsizes as a graphic designer
+[body, subheadline, headline] = g17[-1:2]
+body 
+# 10.506577808748212
+subheadline
+# 17.0
+headline
+# 27.50657780874821
+
+```
+
+Make sure to read up on the silver and bronce ratio also, they are super cool.
+
+### Working with Sequences of Angles
+
+```python
+
+from leonardo import Gold
+
+
+angles = Gold.angle_sequence() # defaults to radians with no revolutions
+
+angles[6][0]
+# 1.8334087640127485
+
+[angles[i][0] for i in range(4)]
+# [0.0, 2.3999632297286535, 4.799926459457307, 7.1998896891859605]
+
+angles = Gold.angle_sequence(revolves=True)
+
+angles[6][0]
+# 14.399779378371921
+
+```
+
+This is still an early version and no interfaces are guaranteed to stay stable.
