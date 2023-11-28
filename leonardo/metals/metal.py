@@ -47,3 +47,6 @@ class Metal(ABC):
     def __repr__(self) -> str:
         cls = self.__class__
         return "{}({})".format(cls.__name__, self._scale_factor)
+
+    def __str__(self) -> str:
+        return str(self._scale_factor)
