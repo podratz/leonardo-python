@@ -7,12 +7,11 @@ class GeometricSequence:
         self.common_ratio = common_ratio
         self.scale_factor = scale_factor
 
-    def __call__(self, n: int = 1) -> float:
-        return self.scale_factor * (self.common_ratio**n)
-
     def __getitem__(self, subscript) -> list[float]:
         if isinstance(subscript, int):
-            return [self(subscript)]
+            n = subscript
+            item = self.scale_factor * (self.common_ratio**n)
+            return [item]
 
         if subscript.start is None:
             raise TypeError("sequence requires pre-determined start")
@@ -26,11 +25,11 @@ class GeometricSequence:
             raise ValueError("slice step cannot be zero")
         step = subscript.step or 1
 
-        return [self(index) for index in range(start, stop, step)]
+        return [self[index][0] for index in range(start, stop, step)]
 
     def __iter__(self):
         for index in itertools.count():
-            yield self(index)
+            yield self[index]
 
     def __eq__(self, other: object) -> NotImplementedType | bool:
         if not isinstance(other, GeometricSequence):

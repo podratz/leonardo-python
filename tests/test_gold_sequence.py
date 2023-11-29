@@ -8,18 +8,18 @@ from leonardo.utils import GeometricSequence
 class TestGoldSequence(unittest.TestCase):
     def setUp(self) -> None:
         self.golden_ratio = (1 + math.sqrt(5)) / 2
-        self.g = Gold.sequence()
+        self.g = Gold()
 
     def test_call(self):
-        g0 = Gold.sequence(0)
+        g0 = Gold(0)
         g0_successor = g0()
         self.assertEqual(g0_successor, 0)
 
-        g1 = Gold.sequence(1)
+        g1 = Gold(1)
         g1_successor = g1()
         self.assertAlmostEqual(g1_successor, self.golden_ratio)
 
-        g17 = Gold.sequence(17)
+        g17 = Gold(17)
         g17_successor = g17()
         self.assertAlmostEqual(g17_successor, 17 * self.golden_ratio)
 
