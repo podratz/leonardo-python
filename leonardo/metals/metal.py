@@ -4,8 +4,7 @@ from functools import total_ordering
 from types import NotImplementedType
 from typing import Self, overload
 
-from ..utils.angle_sequence import AngleSequence
-from ..utils.geometric_sequence import GeometricSequence
+from ..utils import AngleSequence, GeometricSequence
 
 
 @total_ordering
