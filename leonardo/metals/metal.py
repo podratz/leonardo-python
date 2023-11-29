@@ -61,6 +61,9 @@ class Metal(ABC):
     def __float__(self) -> float:
         return self.magnitude
 
+    def __int__(self) -> int:
+        return int(self.magnitude)
+
     @classmethod
     def angle(cls, *, degrees=False) -> float:
         """Returns the metallic angle."""
