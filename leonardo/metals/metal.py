@@ -25,7 +25,7 @@ class Metal(ABC):
         return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
 
     def __init__(self, magnitude: float = 1.0) -> None:
-        self.magnitude = magnitude
+        self.magnitude = float(magnitude)
 
     def __getitem__(self, subscript) -> list[float]:
         return type(self).sequence(scale_factor=self.magnitude)[subscript]
