@@ -11,22 +11,25 @@ class GeometricSequence:
     def __getitem__(self, subscript: Union[int, slice]) -> Union[float, list[float]]:
         if isinstance(subscript, int):
             n = subscript
+
             item = self.scale_factor * (self.common_ratio**n)
             return item
 
-        if subscript.start is None:
-            raise TypeError("sequence requires pre-determined start")
-        start = subscript.start
+        else:
+            if subscript.start is None:
+                raise TypeError("sequence requires pre-determined start")
+            start = subscript.start
 
-        if subscript.step is not None and subscript.stop is None:
-            raise TypeError("sequence with step needs pre-determined stop")
-        stop = subscript.stop
+            if subscript.step is not None and subscript.stop is None:
+                raise TypeError("sequence with step needs pre-determined stop")
+            stop = subscript.stop
 
-        if subscript.step == 0:
-            raise ValueError("slice step cannot be zero")
-        step = subscript.step or 1
+            if subscript.step == 0:
+                raise ValueError("slice step cannot be zero")
+            step = subscript.step or 1
 
-        return [cast(float, self[index]) for index in range(start, stop, step)]
+            sequence = [cast(float, self[index]) for index in range(start, stop, step)]
+            return sequence
 
     def __iter__(self):
         for index in itertools.count():
