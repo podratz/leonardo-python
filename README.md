@@ -67,15 +67,15 @@ from leonardo import Gold
 
 angles = Gold.angle_sequence() # defaults to radians with no revolutions
 
-angles[6][0]
+angles[6]
 # 1.8334087640127485
 
-[angles[i][0] for i in range(4)]
+[angles[i] for i in range(4)]
 # [0.0, 2.3999632297286535, 4.799926459457307, 7.1998896891859605]
 
 angles = Gold.angle_sequence(revolves=True)
 
-angles[6][0]
+angles[6]
 # 14.399779378371921
 
 ```

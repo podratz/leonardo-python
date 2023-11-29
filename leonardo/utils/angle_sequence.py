@@ -1,4 +1,5 @@
 import math
+from typing import cast, overload
 
 
 class AngleSequence:
@@ -11,11 +12,20 @@ class AngleSequence:
     def _divisor(self) -> float:
         return 360 if self.degrees else math.tau
 
-    def __getitem__(self, subscript) -> list[float]:
+    @overload
+    def __getitem__(self, subscript: int) -> float:
+        ...
+
+    @overload
+    def __getitem__(self, subscript: slice) -> list[float]:
+        ...
+
+    def __getitem__(self, subscript: int | slice) -> float | list[float]:
         if isinstance(subscript, int):
-            new_angle = self.angle * subscript
+            n = cast(int, subscript)
+            new_angle = self.angle * n
             new_angle = new_angle if self.revolves else new_angle % self._divisor
-            return [new_angle]
+            return new_angle
         elif isinstance(subscript, slice):
             raise NotImplementedError()
         else:

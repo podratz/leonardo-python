@@ -1,6 +1,6 @@
 import itertools
 from types import NotImplementedType
-from typing import Union, cast
+from typing import cast, overload
 
 
 class ArithmeticSequence:
@@ -10,7 +10,15 @@ class ArithmeticSequence:
         self.initial_term = initial_term
         """The initial term of the sequence."""
 
-    def __getitem__(self, subscript: Union[int, slice]) -> Union[float, list[float]]:
+    @overload
+    def __getitem__(self, subscript: int) -> float:
+        ...
+
+    @overload
+    def __getitem__(self, subscript: slice) -> list[float]:
+        ...
+
+    def __getitem__(self, subscript: int | slice) -> float | list[float]:
         if isinstance(subscript, int):
             n = cast(int, subscript)
             d = self.common_difference
@@ -20,7 +28,7 @@ class ArithmeticSequence:
         else:
             s = cast(slice, subscript)
             sequence = [self[index] for index in range(s.start, s.stop, s.step)]
-            return cast(list[float], sequence)
+            return sequence
 
     def __iter__(self):
         """Iterate this infinite arithmetic sequence."""

@@ -2,7 +2,7 @@ import math
 from abc import ABC, abstractmethod
 from functools import total_ordering
 from types import NotImplementedType
-from typing import Self, cast
+from typing import Self, overload
 
 from ..utils.angle_sequence import AngleSequence
 from ..utils.geometric_sequence import GeometricSequence
@@ -27,12 +27,20 @@ class Metal(ABC):
     def __init__(self, magnitude: float = 1.0) -> None:
         self.magnitude = float(magnitude)
 
-    def __getitem__(self, subscript) -> float | list[float]:
+    @overload
+    def __getitem__(self, subscript: int) -> float:
+        ...
+
+    @overload
+    def __getitem__(self, subscript: slice) -> list[float]:
+        ...
+
+    def __getitem__(self, subscript: int | slice) -> float | list[float]:
         return type(self).sequence(scale_factor=self.magnitude)[subscript]
 
     def __call__(self, n: int = 1) -> float:
         item = self[n]
-        return cast(float, item)
+        return item
 
     def __next__(self) -> Self:
         cls = type(self)
