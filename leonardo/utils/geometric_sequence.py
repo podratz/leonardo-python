@@ -4,7 +4,7 @@ from typing import Union, cast
 
 
 class GeometricSequence:
-    def __init__(self, common_ratio: float, scale_factor: float = 1):
+    def __init__(self, common_ratio: float, scale_factor: float = 1.0):
         self.common_ratio = common_ratio
         self.scale_factor = scale_factor
 
