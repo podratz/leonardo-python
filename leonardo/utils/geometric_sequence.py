@@ -1,5 +1,6 @@
 import itertools
 from types import NotImplementedType
+from typing import Union, cast
 
 
 class GeometricSequence:
@@ -7,11 +8,11 @@ class GeometricSequence:
         self.common_ratio = common_ratio
         self.scale_factor = scale_factor
 
-    def __getitem__(self, subscript) -> list[float]:
+    def __getitem__(self, subscript: Union[int, slice]) -> Union[float, list[float]]:
         if isinstance(subscript, int):
             n = subscript
             item = self.scale_factor * (self.common_ratio**n)
-            return [item]
+            return item
 
         if subscript.start is None:
             raise TypeError("sequence requires pre-determined start")
@@ -25,7 +26,7 @@ class GeometricSequence:
             raise ValueError("slice step cannot be zero")
         step = subscript.step or 1
 
-        return [self[index][0] for index in range(start, stop, step)]
+        return [cast(float, self[index]) for index in range(start, stop, step)]
 
     def __iter__(self):
         for index in itertools.count():
