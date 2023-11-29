@@ -11,18 +11,21 @@ class TestGoldSequence(unittest.TestCase):
         self.golden_ratio = (1 + math.sqrt(5)) / 2
         self.g = Gold()
 
-    def test_call(self):
+    def test_call_and_next(self):
         g0 = Gold(0)
         g0_successor = g0()
-        self.assertEqual(g0_successor, 0.0)
+        g0_next = next(g0).magnitude
+        self.assertEqual(g0_successor, g0_next, 0.0)
 
         g1 = Gold(1)
         g1_successor = g1()
-        self.assertAlmostEqual(g1_successor, self.golden_ratio)
+        g1_next = next(g1).magnitude
+        self.assertEqual(g1_successor, g1_next, self.golden_ratio)
 
         g17 = Gold(17)
         g17_successor = g17()
-        self.assertAlmostEqual(g17_successor, 17.0 * self.golden_ratio)
+        g17_next = next(g17).magnitude
+        self.assertEqual(g17_successor, g17_next, 17.0 * self.golden_ratio)
 
         self.assertNotEqual(self.g, g0)
         self.assertEqual(self.g, g1)
