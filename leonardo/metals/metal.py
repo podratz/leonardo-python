@@ -59,7 +59,7 @@ class Metal(ABC):
         return str(self.magnitude)
 
     def __float__(self) -> float:
-        return self.magnitude
+        return float(self.magnitude)
 
     def __int__(self) -> int:
         return int(self.magnitude)
