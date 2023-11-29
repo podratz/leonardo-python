@@ -25,10 +25,10 @@ class Metal(ABC):
         return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
 
     def __init__(self, magnitude: float = 1.0) -> None:
-        self._magnitude = magnitude
+        self.magnitude = magnitude
 
     def __getitem__(self, subscript) -> list[float]:
-        return type(self).sequence(scale_factor=self._magnitude)[subscript]
+        return type(self).sequence(scale_factor=self.magnitude)[subscript]
 
     def __call__(self, n: int = 1) -> float:
         [item] = self[n]
@@ -43,21 +43,20 @@ class Metal(ABC):
         if not isinstance(other, Metal):
             return NotImplemented
         return (
-            type(self).ratio == type(other).ratio
-            and self._magnitude == other._magnitude
+            type(self).ratio == type(other).ratio and self.magnitude == other.magnitude
         )
 
     def __lt__(self, other: object) -> NotImplementedType | bool:
         if not isinstance(other, type(self)):
             return NotImplemented
-        return self._magnitude < other._magnitude
+        return self.magnitude < other.magnitude
 
     def __repr__(self) -> str:
         cls = self.__class__
-        return "{}({})".format(cls.__name__, self._magnitude)
+        return "{}({})".format(cls.__name__, self.magnitude)
 
     def __str__(self) -> str:
-        return str(self._magnitude)
+        return str(self.magnitude)
 
     @classmethod
     def angle(cls, *, degrees=False) -> float:
