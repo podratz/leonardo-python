@@ -38,10 +38,12 @@ class Metal(ABC):
         return type(self).sequence(scale_factor=self.magnitude)[subscript]
 
     def __call__(self, n: int = 1) -> float:
+        """The (nth) next metallic value."""
         item = self[n]
         return item
 
     def __next__(self) -> Self:
+        """The next metallic number."""
         cls = type(self)
         next = self()
         return cls(next)
