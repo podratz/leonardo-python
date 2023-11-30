@@ -10,19 +10,19 @@ from ..utils import AngleSequence, GeometricSequence
 
 @total_ordering
 class Metal(ABC):
-    """A class to simplify working with metallic numbers."""
+    """A class to simplify working with the metallic numbers."""
 
     @classmethod
     @property
     @abstractmethod
     def ratio(cls) -> float:
-        """A metallic ratio."""
+        """The metallic ratio."""
         raise NotImplementedError
 
     @classmethod
     @property
     def mean(cls) -> float:
-        """A metallic mean. (inverse of the metallic ratio)"""
+        """The metallic mean. (inverse of the metallic ratio)"""
         return 1 / cls.ratio
 
     @classmethod
@@ -118,7 +118,7 @@ class Metal(ABC):
 
     @classmethod
     def angle(cls, *, degrees=False) -> float:
-        """Returns the metallic angle."""
+        """The metallic angle."""
         return cls.degs if degrees else cls.rads
 
     @classmethod
@@ -131,11 +131,11 @@ class Metal(ABC):
     @classmethod
     @property
     def rads(cls) -> float:
-        """Returns the metallic angle in radians."""
+        """The metallic angle in radians."""
         return math.tau * (1 - 1 / cls.ratio)
 
     @classmethod
     @property
     def degs(cls) -> float:
-        """Returns the metallic angle in degrees."""
+        """The metallic angle in degrees."""
         return 360 * (1 - 1 / cls.ratio)
