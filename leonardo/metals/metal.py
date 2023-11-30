@@ -9,7 +9,7 @@ from ..utils import AngleSequence, GeometricSequence
 
 @total_ordering
 class Metal(ABC):
-    """A class to simplify working with the metallic means."""
+    """A class to simplify working with metallic numbers."""
 
     @property
     @classmethod
@@ -17,6 +17,12 @@ class Metal(ABC):
     def ratio(cls) -> float:
         """A metallic ratio."""
         raise NotImplementedError
+
+    @classmethod
+    @property
+    def mean(cls) -> float:
+        """A metallic mean. (inverse of the metallic ratio)"""
+        return 1 / cls.ratio
 
     @classmethod
     def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
