@@ -11,8 +11,8 @@ from ..utils import AngleSequence, GeometricSequence
 class Metal(ABC):
     """A class to simplify working with metallic numbers."""
 
-    @property
     @classmethod
+    @property
     @abstractmethod
     def ratio(cls) -> float:
         """A metallic ratio."""
