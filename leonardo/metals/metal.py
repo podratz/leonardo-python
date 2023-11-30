@@ -1,5 +1,6 @@
 import math
 from abc import ABC, abstractmethod
+from copy import Error, copy
 from functools import total_ordering
 from types import NotImplementedType
 from typing import Self, overload
@@ -81,6 +82,39 @@ class Metal(ABC):
 
     def __bool__(self) -> bool:
         return bool(self.magnitude)
+
+    class ArithmeticError(Error):
+        """An error type raised for invalid arithmetic operations on metallic numbers."""
+
+    def __iadd__(self, n: int) -> Self:
+        """Add the nth metallic predecessor to itself."""
+        if n == 0:
+            raise Metal.ArithmeticError("in-place addition with zero")
+        self.magnitude += self[-n]
+        return self
+
+    def __isub__(self, n: int) -> Self:
+        """Subtract the nth metallic predecessor from itself."""
+        if n == 0:
+            raise Metal.ArithmeticError("in-place subtraction with zero")
+        self.magnitude -= self[-n]
+        return self
+
+    def __add__(self, n: int) -> Self:
+        """Add the nth metallic predecessor."""
+        if n == 0:
+            raise Metal.ArithmeticError("addition with zero")
+        metal = copy(self)
+        metal.magnitude += self[-n]
+        return metal
+
+    def __sub__(self, n: int) -> Self:
+        """Subtract the nth metallic predecessor."""
+        if n == 0:
+            raise Metal.ArithmeticError("subtraction with zero")
+        metal = copy(self)
+        metal.magnitude -= self[-n]
+        return metal
 
     @classmethod
     def angle(cls, *, degrees=False) -> float:
