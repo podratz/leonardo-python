@@ -8,9 +8,9 @@ class Angle:
 
     @classmethod
     def from_degrees(cls, degrees: float) -> Self:
-        radians = degrees * math.pi / 180
+        radians = degrees * math.tau / 360
         return cls(radians)
 
     @property
     def degrees(self) -> float:
-        return self.radians * 180 / math.pi
+        return self.radians * 360 / math.tau
