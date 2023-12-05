@@ -5,7 +5,7 @@ from functools import total_ordering
 from types import NotImplementedType
 from typing import Self, overload
 
-from ..utils import AngleSequence, GeometricSequence
+from ..sequences import AngleSequence, GeometricSequence
 
 
 @total_ordering

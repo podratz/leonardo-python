@@ -2,7 +2,7 @@ import math
 import unittest
 
 from leonardo.metals import Gold
-from leonardo.utils import GeometricSequence
+from leonardo.sequences import GeometricSequence
 
 
 class TestGoldSequence(unittest.TestCase):
