@@ -31,7 +31,7 @@ class Metal(ABC):
         return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
 
     def __init__(self, magnitude: float = 1.0) -> None:
-        self.magnitude = float(magnitude)
+        self.magnitude = magnitude
 
     @overload
     def __getitem__(self, subscript: int) -> float:
