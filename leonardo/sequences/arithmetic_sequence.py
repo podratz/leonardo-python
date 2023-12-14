@@ -25,10 +25,14 @@ class ArithmeticSequence:
             a_1 = self.initial_term
             a_n = a_1 + (n - 1) * d
             return a_n
-        else:
+        elif isinstance(subscript, slice):
             s = cast(slice, subscript)
             sequence = [self[index] for index in range(s.start, s.stop, s.step)]
             return sequence
+        else:
+            raise TypeError(
+                f"Type of subscript must be a slice or int, but {subscript} was found."
+            )
 
     def __iter__(self):
         """Iterate this infinite arithmetic sequence."""

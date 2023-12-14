@@ -1,10 +1,14 @@
 import math
-from typing import cast, overload
+from typing import cast
+
+from .arithmetic_sequence import ArithmeticSequence
 
 
-class AngleSequence:
+class AngleSequence(ArithmeticSequence):
+    """An arithmetic sequence that revolves."""
+
     def __init__(self, angle: float, degrees=False, revolves=False) -> None:
-        self.angle = angle
+        super().__init__(common_difference=angle, initial_term=0.0)
         self.degrees = degrees
         self.revolves = revolves
 
@@ -12,23 +16,9 @@ class AngleSequence:
     def _divisor(self) -> float:
         return 360 if self.degrees else math.tau
 
-    @overload
-    def __getitem__(self, subscript: int) -> float:
-        ...
-
-    @overload
-    def __getitem__(self, subscript: slice) -> list[float]:
-        ...
-
     def __getitem__(self, subscript: int | slice) -> float | list[float]:
+        item = super().__getitem__(subscript)
         if isinstance(subscript, int):
-            n = cast(int, subscript)
-            new_angle = self.angle * n
-            new_angle = new_angle if self.revolves else new_angle % self._divisor
-            return new_angle
-        elif isinstance(subscript, slice):
-            raise NotImplementedError()
-        else:
-            raise TypeError(
-                f"Type of subscript must be a slice or int, but {subscript} was found."
-            )
+            angle = cast(float, item)
+            item = angle if self.revolves else angle % self._divisor
+        return item
