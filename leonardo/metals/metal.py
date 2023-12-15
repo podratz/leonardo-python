@@ -117,25 +117,24 @@ class Metal(ABC):
         return metal
 
     @classmethod
-    def angle(cls, *, degrees=False) -> float:
-        """The metallic angle."""
-        return cls.degs if degrees else cls.rads
-
-    @classmethod
-    def angle_sequence(cls, degrees=False, revolves=False) -> AngleSequence:
-        """An angle-sequence following the metallic ratio."""
-        return AngleSequence(
-            angle=cls.angle(degrees=degrees), degrees=degrees, revolves=revolves
-        )
+    @property
+    def _degs(cls) -> float:
+        """The metallic angle in degrees."""
+        return 360 * (1 - 1 / cls.ratio)
 
     @classmethod
     @property
-    def rads(cls) -> float:
+    def _rads(cls) -> float:
         """The metallic angle in radians."""
         return math.tau * (1 - 1 / cls.ratio)
 
     @classmethod
-    @property
-    def degs(cls) -> float:
-        """The metallic angle in degrees."""
-        return 360 * (1 - 1 / cls.ratio)
+    def angle(cls, *, degrees=False) -> float:
+        """The metallic angle."""
+        return cls._degs if degrees else cls._rads
+
+    @classmethod
+    def angle_sequence(cls, degrees=False, revolves=False) -> AngleSequence:
+        """An angle-sequence following the metallic ratio."""
+        angle = cls.angle(degrees=degrees)
+        return AngleSequence(angle=angle, degrees=degrees, revolves=revolves)
