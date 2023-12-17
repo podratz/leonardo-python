@@ -25,9 +25,5 @@ class Angle:
         return self.radians * 360 / math.tau
 
     @classmethod
-    def divisor(cls, measure: Measure = Measure.RADIANS) -> float:
-        return 360 if measure is Angle.Measure.RADIANS else math.tau
-
-    @classmethod
     def from_mean(cls, mean: float, measure: Measure = Measure.RADIANS):
-        return cls(cls.divisor(measure) * mean)
+        return cls(mean * measure.unity)

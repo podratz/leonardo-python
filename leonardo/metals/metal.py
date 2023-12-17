@@ -117,7 +117,7 @@ class Metal(ABC):
         return metal
 
     @classmethod
-    def angle(cls, *, measure: Angle.Measure = Angle.Measure.RADIANS) -> float:
+    def angle(cls, measure: Angle.Measure = Angle.Measure.RADIANS) -> float:
         """The metallic angle."""
         proportion = 1 - cls.mean
         angle = proportion * measure.unity
@@ -128,5 +128,5 @@ class Metal(ABC):
         cls, measure: Angle.Measure = Angle.Measure.RADIANS, revolves=False
     ) -> AngleSequence:
         """An angle-sequence following the metallic ratio."""
-        angle = cls.angle(measure=measure)
-        return AngleSequence(angle=angle, measure=measure, revolves=revolves)
+        angle = cls.angle(measure)
+        return AngleSequence(angle, measure, revolves)
