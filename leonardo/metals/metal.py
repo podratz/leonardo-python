@@ -1,4 +1,3 @@
-import math
 from abc import ABC, abstractmethod
 from copy import Error, copy
 from functools import total_ordering
@@ -118,14 +117,16 @@ class Metal(ABC):
         return metal
 
     @classmethod
-    def angle(cls, *, degrees=False) -> float:
+    def angle(cls, *, measure: Angle.Measure = Angle.Measure.RADIANS) -> float:
         """The metallic angle."""
         proportion = 1 - cls.mean
-        angle = proportion * (360 if degrees else math.tau)
+        angle = proportion * measure.unity
         return angle
 
     @classmethod
-    def angle_sequence(cls, degrees=False, revolves=False) -> AngleSequence:
+    def angle_sequence(
+        cls, measure: Angle.Measure = Angle.Measure.RADIANS, revolves=False
+    ) -> AngleSequence:
         """An angle-sequence following the metallic ratio."""
-        angle = cls.angle(degrees=degrees)
-        return AngleSequence(angle=angle, degrees=degrees, revolves=revolves)
+        angle = cls.angle(measure=measure)
+        return AngleSequence(angle=angle, measure=measure, revolves=revolves)
