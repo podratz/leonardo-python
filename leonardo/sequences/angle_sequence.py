@@ -1,6 +1,6 @@
 from typing import cast
 
-from ..geometry import Angle
+from ..geometry import Angle, CircleMeasure
 from .arithmetic_sequence import ArithmeticSequence
 
 
@@ -8,7 +8,7 @@ class AngleSequence(ArithmeticSequence):
     """An arithmetic sequence that revolves."""
 
     def __init__(
-        self, angle: float, measure=Angle.Measure.RADIANS, revolves=False
+        self, angle: float, measure=CircleMeasure.RADIANS, revolves=False
     ) -> None:
         super().__init__(common_difference=angle, initial_term=0.0)
         self.measure = measure
