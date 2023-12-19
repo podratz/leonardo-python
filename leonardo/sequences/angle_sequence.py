@@ -1,22 +1,32 @@
-from typing import cast
+import math
+from typing import cast, overload
 
-from ..geometry import CircleMeasure
+from ..geometry import Angle
 from .arithmetic_sequence import ArithmeticSequence
 
 
 class AngleSequence(ArithmeticSequence):
     """An arithmetic sequence that revolves."""
 
-    def __init__(
-        self, angle: float, measure=CircleMeasure.RADIANS, revolves=False
-    ) -> None:
-        super().__init__(common_difference=angle, initial_term=0.0)
-        self.measure = measure
+    def __init__(self, angle: Angle, revolves=False) -> None:
+        super().__init__(common_difference=angle.radians, initial_term=0.0)
         self.revolves = revolves
 
-    def __getitem__(self, subscript: int | slice) -> float | list[float]:
+    @overload
+    def __getitem__(self, subscript: int) -> Angle:
+        ...
+
+    @overload
+    def __getitem__(self, subscript: slice) -> list[Angle]:
+        ...
+
+    def __getitem__(self, subscript: int | slice) -> Angle | list[Angle]:
         item = super().__getitem__(subscript)
-        if isinstance(subscript, int) and self.revolves:
-            item = cast(float, item)
-            item %= self.measure.unity
-        return item
+        if isinstance(subscript, int):
+            radians = cast(float, item)
+            if self.revolves:
+                radians = radians % math.tau
+            return Angle(radians)
+        if isinstance(subscript, slice):
+            list_of_radians = cast(list[float], item)
+            return list(map(lambda radians: Angle(radians), list_of_radians))

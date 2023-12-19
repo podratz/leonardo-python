@@ -4,7 +4,7 @@ from functools import total_ordering
 from types import NotImplementedType
 from typing import Self, overload
 
-from ..geometry import CircleMeasure
+from ..geometry import Angle
 from ..sequences import AngleSequence, GeometricSequence
 
 
@@ -117,16 +117,12 @@ class Metal(ABC):
         return metal
 
     @classmethod
-    def angle(cls, measure: CircleMeasure = CircleMeasure.RADIANS) -> float:
+    @property
+    def angle(cls) -> Angle:
         """The metallic angle."""
-        proportion = 1 - cls.mean
-        angle = proportion * measure.unity
-        return angle
+        return Angle.from_mean(cls.mean)
 
     @classmethod
-    def angle_sequence(
-        cls, measure: CircleMeasure = CircleMeasure.RADIANS, revolves=False
-    ) -> AngleSequence:
+    def angle_sequence(cls, revolves=False) -> AngleSequence:
         """An angle-sequence following the metallic ratio."""
-        angle = cls.angle(measure)
-        return AngleSequence(angle, measure, revolves)
+        return AngleSequence(cls.angle, revolves)
