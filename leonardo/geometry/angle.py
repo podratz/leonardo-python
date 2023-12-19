@@ -22,3 +22,6 @@ class Angle:
 
     def __float__(self):
         return self.radians
+
+    def __repr__(self):
+        return f"Angle({self.radians})"
