@@ -19,3 +19,6 @@ class Angle:
     @property
     def degrees(self) -> float:
         return self.radians * 360 / math.tau
+
+    def __float__(self):
+        return self.radians
