@@ -1,6 +1,6 @@
 from typing import cast
 
-from ..geometry import Angle, CircleMeasure
+from ..geometry import CircleMeasure
 from .arithmetic_sequence import ArithmeticSequence
 
 
@@ -18,5 +18,5 @@ class AngleSequence(ArithmeticSequence):
         item = super().__getitem__(subscript)
         if isinstance(subscript, int) and self.revolves:
             item = cast(float, item)
-            item %= Angle.divisor(self.measure)
+            item %= self.measure.unity
         return item
