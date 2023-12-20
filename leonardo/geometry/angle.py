@@ -42,6 +42,3 @@ class Angle:
         real = math.cos(self.radians)
         imag = math.sin(self.radians)
         return complex(real, imag)
-
-    def __float__(self):
-        return self.fraction
