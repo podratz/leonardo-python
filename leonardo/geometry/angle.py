@@ -7,8 +7,8 @@ class Angle:
         self.radians = radians
 
     @classmethod
-    def from_mean(cls, mean: float) -> Self:
-        radians = mean * math.tau
+    def from_fraction(cls, fraction: float) -> Self:
+        radians = fraction * math.tau
         return cls(radians)
 
     @classmethod

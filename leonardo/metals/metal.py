@@ -120,7 +120,7 @@ class Metal(ABC):
     @property
     def angle(cls) -> Angle:
         """The metallic angle."""
-        return Angle.from_mean(cls.mean)
+        return Angle.from_fraction(cls.mean)
 
     @classmethod
     @property
