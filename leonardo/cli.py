@@ -18,9 +18,10 @@ def parse_args():
         "-m",
         "--metal",
         nargs="?",
-        choices=["g", "s", "b"],
+        choices=["g", "s", "b", "gold", "silver", "bronce"],
         default="g",
         const="g",
+        metavar="M",
         help="specify the metal",
     )
     parser.add_argument(
@@ -49,12 +50,14 @@ def main():
     start = 0 if args.prev is None else -args.prev + 1
     stop = 2 if args.next is None else args.next + 1
     match args.metal:
-        case "s":
+        case "s" | "silver":
             metal = Silver
-        case "b":
+        case "b" | "silver":
             metal = Bronce
-        case _:
+        case "g" | "gold":
             metal = Gold
+        case arg:
+            raise ValueError(f"{arg} is not a valid metal")
     metal_numbers = metal.sequence(scale_factor)
     metal_strings = map(str, metal_numbers[start:stop])
     output = "\n".join(metal_strings)
