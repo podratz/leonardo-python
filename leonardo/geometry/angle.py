@@ -20,6 +20,14 @@ class Angle:
     def degrees(self) -> float:
         return self.radians * 360 / math.tau
 
+    @property
+    def degrees_canonic(self) -> float:
+        return self.degrees % 360
+
+    @property
+    def canonic(self) -> float:
+        return self.radians % math.tau
+
     def __float__(self):
         return self.radians
 
