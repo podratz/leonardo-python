@@ -4,6 +4,8 @@ from typing import cast, overload
 
 
 class ArithmeticSequence:
+    """An arithmetic sequence."""
+
     def __init__(self, common_difference: float = 1.0, initial_term: float = 0.0):
         self.common_difference = common_difference
         """The constant difference between two successive terms."""

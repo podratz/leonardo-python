@@ -4,6 +4,8 @@ from typing import cast, overload
 
 
 class GeometricSequence:
+    """A geometric sequence."""
+
     def __init__(self, common_ratio: float, scale_factor: float = 1.0):
         """Create a geometric sequence from a common ratio and a scale factor."""
         self.common_ratio = common_ratio
