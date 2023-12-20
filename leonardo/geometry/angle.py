@@ -17,6 +17,10 @@ class Angle:
         return cls(radians)
 
     @property
+    def fraction(self) -> float:
+        return self.radians / math.tau
+
+    @property
     def degrees(self) -> float:
         return self.radians * 360 / math.tau
 
