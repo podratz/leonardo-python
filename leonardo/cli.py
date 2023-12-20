@@ -49,8 +49,6 @@ def parse_args():
 def main():
     args = parse_args()
     scale_factor = args.scale or 1
-    start = 0 if args.prev is None else -args.prev + 1
-    stop = 2 if args.next is None else args.next + 1
     match args.metal:
         case "s" | "silver":
             metal = Silver
@@ -61,6 +59,8 @@ def main():
         case arg:
             raise ValueError(f"{arg} is not a valid metal")
     metal_numbers = metal.sequence(scale_factor)
+    start = 0 if args.prev is None else -args.prev + 1
+    stop = 2 if args.next is None else args.next + 1
     metal_strings = map(str, metal_numbers[start:stop])
     output = "\n".join(metal_strings)
     print(output)
