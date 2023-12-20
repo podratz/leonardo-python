@@ -11,35 +11,35 @@ def parse_args():
     )
     # positional argument
     parser.add_argument(
-        "scale", metavar="S", nargs="?", type=int, default=1, help="scale factor (int)"
+        "scale", metavar="S", default=1, type=int, nargs="?", help="scale factor (int)"
     )
     # options
     parser.add_argument(
         "-m",
         "--metal",
-        nargs="?",
+        metavar="M",
         choices=["g", "s", "b", "gold", "silver", "bronce"],
         default="g",
         const="g",
-        metavar="M",
+        nargs="?",
         help="metal (choose from {g[old], s[ilver], b[ronce]})",
     )
     parser.add_argument(
         "-p",
         "--prev",
+        metavar="P",
+        default=0,
         type=int,
         nargs="?",
-        default=0,
-        metavar="P",
         help="number of preceeding numbers (int)",
     )
     parser.add_argument(
         "-n",
         "--next",
+        metavar="N",
+        default=1,
         type=int,
         nargs="?",
-        default=1,
-        metavar="N",
         help="number of succeeding numbers (int)",
     )
     args = parser.parse_args()
