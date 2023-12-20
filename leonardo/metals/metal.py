@@ -51,16 +51,16 @@ class Metal(ABC):
     def __getitem__(self, subscript: int | slice) -> float | list[float]:
         return type(self).sequence(scale_factor=self.magnitude)[subscript]
 
+    def __next__(self) -> Self:
+        """The next metallic number."""
+        next = self[1]
+        cls = type(self)
+        return cls(next)
+
     def __call__(self, n: int = 1) -> float:
         """The (nth) next metallic value."""
         item = self[n]
         return item
-
-    def __next__(self) -> Self:
-        """The next metallic number."""
-        cls = type(self)
-        next = self()
-        return cls(next)
 
     def __eq__(self, other: object) -> NotImplementedType | bool:
         if not isinstance(other, Metal):
