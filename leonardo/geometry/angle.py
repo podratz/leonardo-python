@@ -36,6 +36,12 @@ class Angle:
     def radians_canonic(self) -> float:
         return self.radians % math.tau
 
+    @property
+    def complex(self) -> complex:
+        real = math.cos(self.radians)
+        imag = math.sin(self.radians)
+        return complex(real, imag)
+
     def __float__(self):
         return self.radians
 
