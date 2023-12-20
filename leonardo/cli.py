@@ -11,7 +11,7 @@ def parse_args():
     )
     # positional argument
     parser.add_argument(
-        "scale", metavar="S", nargs="?", type=int, default=1, help="scale factor"
+        "scale", metavar="S", nargs="?", type=int, default=1, help="scale factor (int)"
     )
     # options
     parser.add_argument(
@@ -22,7 +22,7 @@ def parse_args():
         default="g",
         const="g",
         metavar="M",
-        help="specify the metal",
+        help="specify the metal (choose from {g[old], s[ilver], b[ronce]})",
     )
     parser.add_argument(
         "-p",
@@ -30,7 +30,8 @@ def parse_args():
         type=int,
         nargs="?",
         default=0,
-        help="specify the number of preceeding numbers",
+        metavar="P",
+        help="specify the number of preceeding numbers (int)",
     )
     parser.add_argument(
         "-n",
@@ -38,7 +39,8 @@ def parse_args():
         type=int,
         nargs="?",
         default=1,
-        help="specify the number of succeeding numbers",
+        metavar="N",
+        help="specify the number of succeeding numbers (int)",
     )
     args = parser.parse_args()
     return args
