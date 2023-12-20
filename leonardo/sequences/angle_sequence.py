@@ -8,7 +8,7 @@ class AngleSequence(ArithmeticSequence):
     """An arithmetic sequence that revolves."""
 
     def __init__(self, angle: Angle) -> None:
-        super().__init__(common_difference=angle.radians, initial_term=0.0)
+        super().__init__(common_difference=angle.radians, initial_term=angle.radians)
 
     @overload
     def __getitem__(self, subscript: int) -> Angle:
