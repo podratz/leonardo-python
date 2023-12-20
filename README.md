@@ -20,11 +20,14 @@ Silver.ratio
 Bronce.ratio
 # 3.302775637731995
 
-Gold.angle.degrees
-# 137.50776405003785
+str(Gold.angle)
+# '137.51°'
 
-Gold.angle.radians
-# 2.399963229728653
+str(Silver.angle)
+# '105.44°'
+
+str(Bronce.angle)
+# '83.67°'
 
 ```
 
