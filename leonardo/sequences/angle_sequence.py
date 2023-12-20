@@ -24,5 +24,5 @@ class AngleSequence(ArithmeticSequence):
             radians = cast(float, item)
             return Angle(radians)
         if isinstance(subscript, slice):
-            list_of_radians = cast(list[float], item)
-            return list(map(lambda radians: Angle(radians), list_of_radians))
+            list_of_angles = cast(list[Angle], item)
+            return list_of_angles
