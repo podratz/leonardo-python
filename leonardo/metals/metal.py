@@ -31,13 +31,13 @@ class Metal(ABC):
 
     @classmethod
     def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
-        """A series of numbers following the metallic ratio in growth."""
+        """A sequence of numbers following the metallic ratio in growth."""
         return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
 
     @classmethod
     @property
     def angle_sequence(cls) -> AngleSequence:
-        """An angle-sequence following the metallic angle in rotation."""
+        """A sequence of angles following the metallic ratio in rotation."""
         return AngleSequence(cls.angle)
 
     @overload
