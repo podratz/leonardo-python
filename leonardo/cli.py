@@ -20,8 +20,6 @@ def parse_args():
         metavar="M",
         choices=["g", "s", "b", "gold", "silver", "bronce"],
         default="g",
-        const="g",
-        nargs="?",
         help="metal (choose from {g[old], s[ilver], b[ronce]})",
     )
     parser.add_argument(
