@@ -29,7 +29,7 @@ class Angle:
         return self.degrees % 360
 
     @property
-    def canonic(self) -> float:
+    def radians_canonic(self) -> float:
         return self.radians % math.tau
 
     def __float__(self):
