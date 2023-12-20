@@ -15,6 +15,8 @@ class Metal(ABC):
     def __init__(self, magnitude: float = 1.0) -> None:
         self.magnitude = magnitude
 
+    # Properties
+
     @classmethod
     @property
     @abstractmethod
@@ -40,6 +42,8 @@ class Metal(ABC):
         """A sequence of angles following the metallic ratio in rotation."""
         return AngleSequence(cls.angle)
 
+    # Item access
+
     @overload
     def __getitem__(self, subscript: int) -> float:
         ...
@@ -62,33 +66,7 @@ class Metal(ABC):
         item = self[n]
         return item
 
-    def __eq__(self, other: object) -> NotImplementedType | bool:
-        if not isinstance(other, Metal):
-            return NotImplemented
-        return (
-            type(self).ratio == type(other).ratio and self.magnitude == other.magnitude
-        )
-
-    def __lt__(self, other: object) -> NotImplementedType | bool:
-        if not isinstance(other, type(self)):
-            return NotImplemented
-        return self.magnitude < other.magnitude
-
-    def __repr__(self) -> str:
-        cls = self.__class__
-        return "{}({})".format(cls.__name__, self.magnitude)
-
-    def __str__(self) -> str:
-        return str(self.magnitude)
-
-    def __float__(self) -> float:
-        return float(self.magnitude)
-
-    def __int__(self) -> int:
-        return int(self.magnitude)
-
-    def __bool__(self) -> bool:
-        return bool(self.magnitude)
+    # Arithmetic
 
     class ArithmeticError(Error):
         """An error type raised for invalid arithmetic operations on metallic numbers."""
@@ -122,3 +100,37 @@ class Metal(ABC):
         metal = copy(self)
         metal.magnitude -= self[-n]
         return metal
+
+    # Comparison
+
+    def __eq__(self, other: object) -> NotImplementedType | bool:
+        if not isinstance(other, Metal):
+            return NotImplemented
+        return (
+            type(self).ratio == type(other).ratio and self.magnitude == other.magnitude
+        )
+
+    def __lt__(self, other: object) -> NotImplementedType | bool:
+        if not isinstance(other, type(self)):
+            return NotImplemented
+        return self.magnitude < other.magnitude
+
+    # Coalescing
+
+    def __str__(self) -> str:
+        return str(self.magnitude)
+
+    def __float__(self) -> float:
+        return float(self.magnitude)
+
+    def __int__(self) -> int:
+        return int(self.magnitude)
+
+    def __bool__(self) -> bool:
+        return bool(self.magnitude)
+
+    # Debug
+
+    def __repr__(self) -> str:
+        cls = self.__class__
+        return "{}({})".format(cls.__name__, self.magnitude)
