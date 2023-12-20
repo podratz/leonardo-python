@@ -5,13 +5,13 @@ from . import Gold
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        prog="Leonardo",
-        description="Compute metallic means.",
+        prog="leonardo",
+        description="generates metallic numbers",
         epilog="by N. M. Podratz",
     )
     # positional argument
     parser.add_argument(
-        "scale", metavar="S", nargs="?", type=int, default=1, help="The scale factor"
+        "scale", metavar="S", nargs="?", type=int, default=1, help="scale factor"
     )
     # options
     # parser.add_argument(
@@ -23,7 +23,7 @@ def parse_args():
         type=int,
         nargs="?",
         default=0,
-        help="number of preceding values",
+        help="specify the number of preceeding numbers",
     )
     parser.add_argument(
         "-n",
@@ -31,7 +31,7 @@ def parse_args():
         type=int,
         nargs="?",
         default=1,
-        help="number of succeeding values",
+        help="specify the number of succeeding numbers",
     )
     args = parser.parse_args()
     return args
