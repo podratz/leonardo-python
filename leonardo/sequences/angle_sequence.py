@@ -22,7 +22,7 @@ class AngleSequence(ArithmeticSequence):
         item = super().__getitem__(subscript)
         if isinstance(subscript, int):
             radians = cast(float, item)
-            return Angle(radians)
+            return Angle.from_radians(radians)
         if isinstance(subscript, slice):
             list_of_angles = cast(list[Angle], item)
             return list_of_angles

@@ -3,38 +3,38 @@ from typing import Self
 
 
 class Angle:
-    def __init__(self, radians: float) -> None:
-        self.radians = radians
+    def __init__(self, fraction: float) -> None:
+        self.fraction = fraction
 
     @classmethod
-    def from_fraction(cls, fraction: float) -> Self:
-        radians = fraction * math.tau
-        return cls(radians)
+    def from_radians(cls, radians: float) -> Self:
+        fraction = radians / math.tau
+        return cls(fraction)
 
     @classmethod
     def from_degrees(cls, degrees: float) -> Self:
-        radians = degrees * math.tau / 360
-        return cls(radians)
-
-    @property
-    def fraction(self) -> float:
-        return self.radians / math.tau
+        fraction = degrees / 360
+        return cls(fraction)
 
     @property
     def fraction_canonic(self) -> float:
         return self.fraction % 1
 
     @property
-    def degrees(self) -> float:
-        return self.radians * 360 / math.tau
-
-    @property
-    def degrees_canonic(self) -> float:
-        return self.degrees % 360
+    def radians(self) -> float:
+        return self.fraction * math.tau
 
     @property
     def radians_canonic(self) -> float:
         return self.radians % math.tau
+
+    @property
+    def degrees(self) -> float:
+        return self.fraction * 360
+
+    @property
+    def degrees_canonic(self) -> float:
+        return self.degrees % 360
 
     @property
     def complex(self) -> complex:
@@ -43,7 +43,7 @@ class Angle:
         return complex(real, imag)
 
     def __float__(self):
-        return self.radians
+        return self.fraction
 
     def __repr__(self):
-        return f"Angle({self.radians})"
+        return f"Angle({self.fraction})"

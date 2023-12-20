@@ -30,7 +30,7 @@ class Metal(ABC):
     def angle(cls) -> Angle:
         """The metallic angle."""
         fraction = cls.iratio**2
-        return Angle.from_fraction(fraction)
+        return Angle(fraction)
 
     @classmethod
     def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
