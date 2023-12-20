@@ -50,10 +50,10 @@ def main():
     args = parse_args()
     scale_factor = args.scale or 1
     match args.metal:
+        case "b" | "bronce":
+            metal = Bronce
         case "s" | "silver":
             metal = Silver
-        case "b" | "silver":
-            metal = Bronce
         case "g" | "gold":
             metal = Gold
         case arg:
