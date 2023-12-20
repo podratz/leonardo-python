@@ -21,8 +21,8 @@ class Metal(ABC):
 
     @classmethod
     @property
-    def mean(cls) -> float:
-        """The metallic mean. (inverse of the metallic ratio)"""
+    def iratio(cls) -> float:
+        """The inverse of the metallic ratio."""
         return 1 / cls.ratio
 
     @classmethod
@@ -120,7 +120,7 @@ class Metal(ABC):
     @property
     def angle(cls) -> Angle:
         """The metallic angle."""
-        return Angle.from_fraction(cls.mean)
+        return Angle.from_fraction(cls.iratio)
 
     @classmethod
     @property
