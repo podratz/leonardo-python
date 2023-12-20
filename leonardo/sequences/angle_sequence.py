@@ -5,7 +5,7 @@ from .arithmetic_sequence import ArithmeticSequence
 
 
 class AngleSequence(ArithmeticSequence):
-    """An arithmetic sequence that revolves."""
+    """An arithmetic sequence of angles."""
 
     def __init__(self, angle: Angle) -> None:
         super().__init__(common_difference=angle.radians, initial_term=angle.radians)
