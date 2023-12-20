@@ -21,6 +21,10 @@ class Angle:
         return self.radians / math.tau
 
     @property
+    def fraction_canonic(self) -> float:
+        return self.fraction % 1
+
+    @property
     def degrees(self) -> float:
         return self.radians * 360 / math.tau
 
