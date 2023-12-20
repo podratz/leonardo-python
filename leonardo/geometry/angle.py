@@ -42,3 +42,6 @@ class Angle:
         real = math.cos(self.radians)
         imag = math.sin(self.radians)
         return complex(real, imag)
+
+    def __str__(self) -> str:
+        return f"{self.degrees:.2f}\u00B0"
