@@ -22,7 +22,7 @@ def parse_args():
         default="g",
         const="g",
         metavar="M",
-        help="specify the metal (choose from {g[old], s[ilver], b[ronce]})",
+        help="metal (choose from {g[old], s[ilver], b[ronce]})",
     )
     parser.add_argument(
         "-p",
@@ -31,7 +31,7 @@ def parse_args():
         nargs="?",
         default=0,
         metavar="P",
-        help="specify the number of preceeding numbers (int)",
+        help="number of preceeding numbers (int)",
     )
     parser.add_argument(
         "-n",
@@ -40,7 +40,7 @@ def parse_args():
         nargs="?",
         default=1,
         metavar="N",
-        help="specify the number of succeeding numbers (int)",
+        help="number of succeeding numbers (int)",
     )
     args = parser.parse_args()
     return args
