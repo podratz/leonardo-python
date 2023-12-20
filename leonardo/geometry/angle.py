@@ -1,10 +1,11 @@
 import math
+from dataclasses import dataclass
 from typing import Self
 
 
+@dataclass
 class Angle:
-    def __init__(self, fraction: float) -> None:
-        self.fraction = fraction
+    fraction: float = 0
 
     @classmethod
     def from_radians(cls, radians: float) -> Self:
@@ -44,6 +45,3 @@ class Angle:
 
     def __float__(self):
         return self.fraction
-
-    def __repr__(self):
-        return f"Angle({self.fraction})"
