@@ -123,6 +123,6 @@ class Metal(ABC):
         return Angle.from_mean(cls.mean)
 
     @classmethod
-    def angle_sequence(cls, revolves=False) -> AngleSequence:
+    def angle_sequence(cls) -> AngleSequence:
         """An angle-sequence following the metallic ratio."""
-        return AngleSequence(cls.angle, revolves)
+        return AngleSequence(cls.angle)
