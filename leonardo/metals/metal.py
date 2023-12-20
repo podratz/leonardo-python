@@ -21,12 +21,6 @@ class Metal(ABC):
 
     @classmethod
     @property
-    def iratio(cls) -> float:
-        """The inverse of the metallic ratio."""
-        return 1 / cls.ratio
-
-    @classmethod
-    @property
     def angle(cls) -> Angle:
         """The metallic angle."""
         fraction = 1 / (1 + cls.ratio)
