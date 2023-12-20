@@ -40,7 +40,7 @@ class Metal(ABC):
     @classmethod
     @property
     def angle_sequence(cls) -> AngleSequence:
-        """An angle-sequence following the metallic ratio."""
+        """An angle-sequence following the metallic angle in rotation."""
         return AngleSequence(cls.angle)
 
     def __init__(self, magnitude: float = 1.0) -> None:
