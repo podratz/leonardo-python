@@ -12,6 +12,9 @@ from ..sequences import AngleSequence, GeometricSequence
 class Metal(ABC):
     """A class to simplify working with the metallic numbers."""
 
+    def __init__(self, magnitude: float = 1.0) -> None:
+        self.magnitude = magnitude
+
     @classmethod
     @property
     @abstractmethod
@@ -36,9 +39,6 @@ class Metal(ABC):
     def angle_sequence(cls) -> AngleSequence:
         """An angle-sequence following the metallic angle in rotation."""
         return AngleSequence(cls.angle)
-
-    def __init__(self, magnitude: float = 1.0) -> None:
-        self.magnitude = magnitude
 
     @overload
     def __getitem__(self, subscript: int) -> float:
