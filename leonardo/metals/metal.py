@@ -120,7 +120,8 @@ class Metal(ABC):
     @property
     def angle(cls) -> Angle:
         """The metallic angle."""
-        return Angle.from_fraction(cls.iratio**2)
+        fraction = cls.iratio**2
+        return Angle.from_fraction(fraction)
 
     @classmethod
     @property
