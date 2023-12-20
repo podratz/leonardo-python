@@ -10,7 +10,7 @@ from ..sequences import AngleSequence, GeometricSequence
 
 @total_ordering
 class Metal(ABC):
-    """A class to simplify working with the metallic numbers."""
+    """A class to work with metallic ratios."""
 
     def __init__(self, magnitude: float = 1.0) -> None:
         self.magnitude = magnitude

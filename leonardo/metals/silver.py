@@ -4,10 +4,10 @@ from .metal import Metal
 
 
 class Silver(Metal):
-    """A class to simplify working with the silver mean."""
+    """A class to work with the silver ratio."""
 
     @classmethod
     @property
     def ratio(cls) -> float:
-        """The silver ratio that approximates to 2.414."""
+        """The silver ratio which approximates to 2.414."""
         return (2 + math.sqrt(8)) / 2
