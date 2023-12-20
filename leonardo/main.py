@@ -1,6 +1,6 @@
 import argparse
 
-from .metals.gold import Gold
+from . import Gold
 
 
 def parse_args():
@@ -39,7 +39,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    metal = args.metal  # assume Gold
+    # metal = args.metal
     scale_factor = args.scale or 1
     start = 0 if args.prev is None else -args.prev + 1
     stop = 2 if args.next is None else args.next + 1
