@@ -26,9 +26,22 @@ class Metal(ABC):
         return 1 / cls.ratio
 
     @classmethod
+    @property
+    def angle(cls) -> Angle:
+        """The metallic angle."""
+        fraction = cls.iratio**2
+        return Angle.from_fraction(fraction)
+
+    @classmethod
     def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
         """A series of numbers following the metallic ratio in growth."""
         return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
+
+    @classmethod
+    @property
+    def angle_sequence(cls) -> AngleSequence:
+        """An angle-sequence following the metallic ratio."""
+        return AngleSequence(cls.angle)
 
     def __init__(self, magnitude: float = 1.0) -> None:
         self.magnitude = magnitude
@@ -115,16 +128,3 @@ class Metal(ABC):
         metal = copy(self)
         metal.magnitude -= self[-n]
         return metal
-
-    @classmethod
-    @property
-    def angle(cls) -> Angle:
-        """The metallic angle."""
-        fraction = cls.iratio**2
-        return Angle.from_fraction(fraction)
-
-    @classmethod
-    @property
-    def angle_sequence(cls) -> AngleSequence:
-        """An angle-sequence following the metallic ratio."""
-        return AngleSequence(cls.angle)
