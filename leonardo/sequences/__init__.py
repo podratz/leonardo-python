@@ -1,5 +1,5 @@
-from .angle_sequence import AngleSequence
-from .arithmetic_sequence import ArithmeticSequence
-from .geometric_sequence import GeometricSequence
+from .anglesequence import AngleSequence
+from .arithmeticsequence import ArithmeticSequence
+from .geometricsequence import GeometricSequence
 
 __all__ = ["AngleSequence", "ArithmeticSequence", "GeometricSequence"]

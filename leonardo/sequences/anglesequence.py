@@ -1,7 +1,7 @@
 from typing import cast, overload
 
 from ..geometry import Angle
-from .arithmetic_sequence import ArithmeticSequence
+from .arithmeticsequence import ArithmeticSequence
 
 
 class AngleSequence(ArithmeticSequence):
