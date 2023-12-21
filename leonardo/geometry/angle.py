@@ -13,6 +13,8 @@ class Angle:
     def zero(cls) -> Self:
         return cls(0.0)
 
+    # Factory methods
+
     @classmethod
     def from_radians(cls, radians: float) -> Self:
         fraction = radians / math.tau
@@ -22,6 +24,8 @@ class Angle:
     def from_degrees(cls, degrees: float) -> Self:
         fraction = degrees / 360
         return cls(fraction)
+
+    # Properties
 
     @property
     def fraction_canonic(self) -> float:
@@ -49,16 +53,7 @@ class Angle:
         imag = math.sin(self.radians)
         return complex(real, imag)
 
-    def __mul__(self, other: object) -> NotImplementedType | Self:
-        if isinstance(other, int | float):
-            cls = type(self)
-            return cls(self.fraction * other)
-        return NotImplemented
-
-    def __imul__(self, other: object) -> NotImplementedType | None:
-        if isinstance(other, int | float):
-            self.fraction *= other
-        return NotImplemented
+    # Arithmetic
 
     def __add__(self, other: object) -> NotImplementedType | Self:
         if isinstance(other, Angle):
@@ -70,6 +65,19 @@ class Angle:
         if isinstance(other, Angle):
             self.fraction += other.fraction
         return NotImplemented
+
+    def __mul__(self, other: object) -> NotImplementedType | Self:
+        if isinstance(other, int | float):
+            cls = type(self)
+            return cls(self.fraction * other)
+        return NotImplemented
+
+    def __imul__(self, other: object) -> NotImplementedType | None:
+        if isinstance(other, int | float):
+            self.fraction *= other
+        return NotImplemented
+
+    # Coalescing
 
     def __str__(self) -> str:
         return f"{self.degrees:.2f}\u00B0"
