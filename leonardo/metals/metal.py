@@ -40,23 +40,24 @@ class Metal(ABC):
         fraction = 1 / (1 + cls.ratio)
         return Angle(fraction)
 
-    @classmethod
     @property
-    def angle_sequence(cls) -> AngleSequence:
-        """A sequence of angles following the metallic ratio in rotation."""
-        return AngleSequence(cls.angle)
-
-    def to_angle(self) -> Angle:
-        """Convert to the corresponding multiple of the metallic angle."""
+    def angle_adjusted(self) -> Angle:
+        """The adjusted multiple of the metallic angle."""
         if not self:
             return Angle.zero
         cls = type(self)
         n = 1 + math.log(self.magnitude, cls.ratio)
         return cls.angle * n
 
+    @classmethod
+    @property
+    def angle_sequence(cls) -> AngleSequence:
+        """A sequence of angles following the metallic ratio in rotation."""
+        return AngleSequence(cls.angle)
+
     @property
     def angles(self) -> AngleSequence:
-        return type(self).angle_sequence + self.to_angle()
+        return type(self).angle_sequence + self.angle_adjusted
 
     # Item access
 
