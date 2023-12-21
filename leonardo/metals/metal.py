@@ -34,6 +34,7 @@ class Metal(ABC):
         return Angle(fraction)
 
     def to_angle(self) -> Angle:
+        """Convert to the corresponding multiple of the metallic angle."""
         if not self.magnitude:
             return Angle.zero
         cls = type(self)
