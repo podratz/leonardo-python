@@ -15,6 +15,7 @@ class Metal(ABC):
 
     def __init__(self, magnitude: float = 1.0) -> None:
         self.magnitude = magnitude
+        """The magnitude of the metallic number."""
 
     # Properties
 
