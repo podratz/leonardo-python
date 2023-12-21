@@ -9,6 +9,11 @@ class Angle:
     fraction: float = 0
 
     @classmethod
+    @property
+    def zero(cls) -> Self:
+        return cls(0.0)
+
+    @classmethod
     def from_radians(cls, radians: float) -> Self:
         fraction = radians / math.tau
         return cls(fraction)
