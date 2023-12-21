@@ -1,4 +1,5 @@
-from typing import cast, overload
+from types import NotImplementedType
+from typing import Self, cast, overload
 
 from ..geometry import Angle
 from .arithmeticsequence import ArithmeticSequence
@@ -26,3 +27,16 @@ class AngleSequence(ArithmeticSequence):
         if isinstance(subscript, slice):
             list_of_angles = cast(list[Angle], item)
             return list_of_angles
+
+    def __add__(self, other: object) -> NotImplementedType | Self:
+        if isinstance(other, Angle):
+            cls = type(self)
+            angle = Angle.from_radians(self.common_difference)
+            start = Angle.from_radians(self.initial_term + other.radians)
+            return cls(angle=angle, start=start)
+        return NotImplemented
+
+    def __iadd__(self, other: object) -> NotImplementedType | None:
+        if isinstance(other, Angle):
+            self.initial_term += other.radians
+        return NotImplemented
