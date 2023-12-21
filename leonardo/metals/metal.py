@@ -27,11 +27,22 @@ class Metal(ABC):
         raise NotImplementedError
 
     @classmethod
+    def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
+        """A sequence of numbers following the metallic ratio in growth."""
+        return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
+
+    @classmethod
     @property
     def angle(cls) -> Angle:
         """The metallic angle."""
         fraction = 1 / (1 + cls.ratio)
         return Angle(fraction)
+
+    @classmethod
+    @property
+    def angle_sequence(cls) -> AngleSequence:
+        """A sequence of angles following the metallic ratio in rotation."""
+        return AngleSequence(cls.angle)
 
     def to_angle(self) -> Angle:
         """Convert to the corresponding multiple of the metallic angle."""
@@ -41,16 +52,9 @@ class Metal(ABC):
         n = 1 + math.log(self.magnitude, cls.ratio)
         return cls.angle * n
 
-    @classmethod
-    def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
-        """A sequence of numbers following the metallic ratio in growth."""
-        return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
-
-    @classmethod
     @property
-    def angle_sequence(cls) -> AngleSequence:
-        """A sequence of angles following the metallic ratio in rotation."""
-        return AngleSequence(cls.angle)
+    def angles(self) -> AngleSequence:
+        return AngleSequence(angle=type(self).angle, start=self.to_angle())
 
     # Item access
 
