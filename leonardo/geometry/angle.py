@@ -1,5 +1,6 @@
 import math
 from dataclasses import dataclass
+from types import NotImplementedType
 from typing import Self
 
 
@@ -42,6 +43,17 @@ class Angle:
         real = math.cos(self.radians)
         imag = math.sin(self.radians)
         return complex(real, imag)
+
+    def __mul__(self, other: object) -> NotImplementedType | Self:
+        if isinstance(other, int | float):
+            cls = type(self)
+            return cls(self.fraction * other)
+        return NotImplemented
+
+    def __imul__(self, other: object) -> NotImplementedType | None:
+        if isinstance(other, int | float):
+            self.fraction *= other
+        return NotImplemented
 
     def __str__(self) -> str:
         return f"{self.degrees:.2f}\u00B0"
