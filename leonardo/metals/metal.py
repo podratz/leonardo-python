@@ -76,6 +76,20 @@ class Metal(ABC):
         item = self[n]
         return item
 
+    # Comparison
+
+    def __eq__(self, other: object) -> NotImplementedType | bool:
+        if not isinstance(other, Metal):
+            return NotImplemented
+        return (
+            type(self).ratio == type(other).ratio and self.magnitude == other.magnitude
+        )
+
+    def __lt__(self, other: object) -> NotImplementedType | bool:
+        if not isinstance(other, type(self)):
+            return NotImplemented
+        return self.magnitude < other.magnitude
+
     # Arithmetic
 
     class ArithmeticError(Error):
@@ -110,20 +124,6 @@ class Metal(ABC):
         metal = copy(self)
         metal.magnitude -= self[-n]
         return metal
-
-    # Comparison
-
-    def __eq__(self, other: object) -> NotImplementedType | bool:
-        if not isinstance(other, Metal):
-            return NotImplemented
-        return (
-            type(self).ratio == type(other).ratio and self.magnitude == other.magnitude
-        )
-
-    def __lt__(self, other: object) -> NotImplementedType | bool:
-        if not isinstance(other, type(self)):
-            return NotImplemented
-        return self.magnitude < other.magnitude
 
     # Coalescing
 
