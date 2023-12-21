@@ -56,7 +56,7 @@ class Metal(ABC):
 
     @property
     def angles(self) -> AngleSequence:
-        return AngleSequence(angle=type(self).angle, start=self.to_angle())
+        return type(self).angle_sequence + self.to_angle()
 
     # Item access
 
