@@ -57,6 +57,9 @@ class Metal(ABC):
 
     @property
     def angles(self) -> AngleSequence:
+        """A sequence of angles following the metallic ratio in rotation, based on
+        the metallic number.
+        """
         return type(self).angle_sequence + self.angle_adjusted
 
     # Item access
