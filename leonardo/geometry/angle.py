@@ -55,5 +55,16 @@ class Angle:
             self.fraction *= other
         return NotImplemented
 
+    def __add__(self, other: object) -> NotImplementedType | Self:
+        if isinstance(other, Angle):
+            cls = type(self)
+            return cls(self.fraction + other.fraction)
+        return NotImplemented
+
+    def __iadd__(self, other: object) -> NotImplementedType | None:
+        if isinstance(other, Angle):
+            self.fraction += other.fraction
+        return NotImplemented
+
     def __str__(self) -> str:
         return f"{self.degrees:.2f}\u00B0"
