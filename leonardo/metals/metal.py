@@ -17,7 +17,7 @@ class Metal(ABC):
         self.magnitude = magnitude
         """The magnitude of the metallic number."""
 
-    # Properties
+    # Ratio methods
 
     @classmethod
     @property
@@ -30,6 +30,8 @@ class Metal(ABC):
     def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
         """A sequence of numbers following the metallic ratio in growth."""
         return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
+
+    # Angle methods
 
     @classmethod
     @property
