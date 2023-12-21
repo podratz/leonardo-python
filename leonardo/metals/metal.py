@@ -1,3 +1,4 @@
+import math
 from abc import ABC, abstractmethod
 from copy import Error, copy
 from functools import total_ordering
@@ -30,6 +31,13 @@ class Metal(ABC):
         """The metallic angle."""
         fraction = 1 / (1 + cls.ratio)
         return Angle(fraction)
+
+    def to_angle(self) -> Angle:
+        if not self.magnitude:
+            return Angle.zero
+        cls = type(self)
+        n = 1 + math.log(self.magnitude, cls.ratio)
+        return cls.angle * n
 
     @classmethod
     def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
