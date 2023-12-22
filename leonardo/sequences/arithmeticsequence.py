@@ -29,7 +29,10 @@ class ArithmeticSequence:
             return a_n
         elif isinstance(subscript, slice):
             s = cast(slice, subscript)
-            sequence = [self[index] for index in range(s.start, s.stop, s.step)]
+            start = s.start or 1
+            stop = s.stop or (start + 1)
+            step = s.step or 1
+            sequence = [self[index] for index in range(start, stop, step)]
             return sequence
         else:
             raise TypeError(
