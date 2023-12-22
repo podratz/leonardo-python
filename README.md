@@ -32,6 +32,7 @@ str(Bronce.angle)
 ```
 
 ### Working with Geometric Sequences
+
 ``` python
 
 from leonardo import Gold
@@ -72,25 +73,25 @@ from leonardo import Gold
 Gold.angle
 # Angle(fraction=0.38196601125010515)
 
-[a.radians for a in Gold.angle_sequence[1:5:1]]
+[a.radians for a in Gold.angle_sequence[:5]]
 # [2.399963229728653, 4.799926459457306, 7.199889689185959, 9.599852918914612]
 
-[a.radians_canonic for a in Gold.angle_sequence[1:5:1]]
+[a.radians_canonic for a in Gold.angle_sequence[:5]]
 # [2.399963229728653, 4.799926459457306, 0.9167043820063725, 3.316667611735026]
 
-[a.degrees for a in Gold.angle_sequence[1:5:1]]
+[a.degrees for a in Gold.angle_sequence[:5]]
 # [137.50776405003785, 275.0155281000757, 412.5232921501135, 550.0310562001514]
 
-[a.degrees_canonic for a in Gold.angle_sequence[1:5:1]]
+[a.degrees_canonic for a in Gold.angle_sequence[:5]]
 # [137.50776405003785, 275.0155281000757, 52.52329215011349, 190.0310562001514]
 
-[a.fraction for a in Gold.angle_sequence[1:5:1]]
+[a.fraction for a in Gold.angle_sequence[:5]]
 # [0.3819660112501051,
 # 0.7639320225002102,
 # 1.1458980337503153,
 # 1.5278640450004204]
 
-[a.fraction_canonic for a in Gold.angle_sequence[1:5:1]]
+[a.fraction_canonic for a in Gold.angle_sequence[:5]]
 # [0.3819660112501051,
 # 0.7639320225002102,
 # 0.1458980337503153,
@@ -107,7 +108,7 @@ y = Gold.angle.complex.imag
 y
 # 0.6754902942615238
 
-for angle in Gold.angle_sequence[1:5:1]:
+for angle in Gold.angle_sequence[:5]:
     p = angle.complex.real, angle.complex.imag
     print(p)
 # (-0.7373688780783197, 0.6754902942615238)
