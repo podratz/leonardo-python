@@ -119,3 +119,11 @@ for angle in Gold.angle_sequence[:5]:
 ```
 
 This is still an early version and no interfaces are guaranteed to stay stable.
+
+## Running Tests
+
+Run the test-suite to see if the code base is behaving as expected.
+
+```bash
+python3 -m unittest
+```
