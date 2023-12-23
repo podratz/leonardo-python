@@ -150,5 +150,4 @@ class Metal(ABC):
     # Debug
 
     def __repr__(self) -> str:
-        cls = self.__class__
-        return "{}({})".format(cls.__name__, self.magnitude)
+        return f"{self.__class__.__name__}({self.magnitude})"
