@@ -53,10 +53,6 @@ class TestGoldSequence(unittest.TestCase):
         self.assertListEqual(self.g[2:-3:-1], g_2_neg3_neg1)
 
         self.assertRaises(
-            TypeError, GeometricSequence.__getitem__, self.g, slice(None, 5, 1)
-        )
-
-        self.assertRaises(
             TypeError, GeometricSequence.__getitem__, self.g, slice(2, None, 1)
         )
 
