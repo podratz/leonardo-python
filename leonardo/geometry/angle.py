@@ -9,7 +9,6 @@ class Angle:
     fraction: float = 0
 
     @classmethod
-    @property
     def zero(cls) -> Self:
         return cls(0.0)
 

@@ -8,7 +8,7 @@ from .arithmeticsequence import ArithmeticSequence
 class AngleSequence(ArithmeticSequence):
     """An arithmetic sequence of angles."""
 
-    def __init__(self, angle: Angle, start: Angle = Angle.zero) -> None:
+    def __init__(self, angle: Angle, start: Angle = Angle.zero()) -> None:
         super().__init__(common_difference=angle.radians, initial_term=start.radians)
 
     @overload

@@ -20,7 +20,6 @@ class Metal(ABC):
     # Ratio
 
     @classmethod
-    @property
     @abstractmethod
     def ratio(cls) -> float:
         """The metallic ratio."""
@@ -29,7 +28,7 @@ class Metal(ABC):
     @classmethod
     def sequence(cls, scale_factor: float = 1.0) -> GeometricSequence:
         """A sequence of numbers following the metallic ratio in growth."""
-        return GeometricSequence(common_ratio=cls.ratio, scale_factor=scale_factor)
+        return GeometricSequence(common_ratio=cls.ratio(), scale_factor=scale_factor)
 
     @overload
     def __getitem__(self, subscript: int) -> float:
@@ -56,33 +55,31 @@ class Metal(ABC):
     # Angle
 
     @classmethod
-    @property
     def angle(cls) -> Angle:
         """The metallic angle."""
-        fraction = 1 / (1 + cls.ratio)
+        fraction = 1 / (1 + cls.ratio())
         return Angle(fraction)
 
     @classmethod
-    @property
     def angle_sequence(cls) -> AngleSequence:
         """A sequence of angles following the metallic ratio in rotation."""
-        return AngleSequence(cls.angle)
+        return AngleSequence(cls.angle())
 
     @property
     def angle_adjusted(self) -> Angle:
         """The adjusted multiple of the metallic angle."""
         if not self:
-            return Angle.zero
+            return Angle.zero()
         cls = type(self)
-        n = 1 + math.log(self.magnitude, cls.ratio)
-        return cls.angle * n
+        n = 1 + math.log(self.magnitude, cls.ratio())
+        return cls.angle() * n
 
     @property
     def angles(self) -> AngleSequence:
         """A sequence of angles following the metallic ratio in rotation, based on
         the metallic number.
         """
-        return type(self).angle_sequence + self.angle_adjusted
+        return type(self).angle_sequence() + self.angle_adjusted
 
     # Comparison
 
