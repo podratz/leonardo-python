@@ -58,7 +58,7 @@ class Metal(ABC):
     def angle(cls) -> Angle:
         """The metallic angle."""
         fraction = 1 / (1 + cls.ratio())
-        return Angle(fraction)
+        return Angle(fraction=fraction)
 
     @classmethod
     def angle_sequence(cls) -> AngleSequence:

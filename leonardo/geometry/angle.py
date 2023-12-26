@@ -8,21 +8,24 @@ from typing import Self
 class Angle:
     fraction: float = 0
 
+    def __init__(self, **kwargs) -> None:
+        if len(kwargs) != 1:
+            raise ValueError("single argument expected")
+
+        key, value = kwargs.popitem()
+        match key:
+            case "fraction":
+                self.fraction = value
+            case "degrees":
+                self.fraction = value / 360
+            case "radians":
+                self.fraction = value / math.tau
+            case _:
+                raise ValueError("wrong key")
+
     @classmethod
     def zero(cls) -> Self:
-        return cls(0.0)
-
-    # Factory methods
-
-    @classmethod
-    def from_radians(cls, radians: float) -> Self:
-        fraction = radians / math.tau
-        return cls(fraction)
-
-    @classmethod
-    def from_degrees(cls, degrees: float) -> Self:
-        fraction = degrees / 360
-        return cls(fraction)
+        return cls(fraction=0.0)
 
     # Properties
 
@@ -57,7 +60,8 @@ class Angle:
     def __add__(self, other: object) -> NotImplementedType | Self:
         if isinstance(other, Angle):
             cls = type(self)
-            return cls(self.fraction + other.fraction)
+            fraction = self.fraction + other.fraction
+            return cls(fraction=fraction)
         return NotImplemented
 
     def __iadd__(self, other: object) -> NotImplementedType | None:
@@ -68,7 +72,8 @@ class Angle:
     def __mul__(self, other: object) -> NotImplementedType | Self:
         if isinstance(other, int | float):
             cls = type(self)
-            return cls(self.fraction * other)
+            fraction = self.fraction * other
+            return cls(fraction=fraction)
         return NotImplemented
 
     def __imul__(self, other: object) -> NotImplementedType | None:

@@ -25,7 +25,7 @@ class AngleSequence:
         item = self.sequence[subscript]
         if isinstance(subscript, int):
             radians = cast(float, item)
-            return Angle.from_radians(radians)
+            return Angle(radians=radians)
         if isinstance(subscript, slice):
             list_of_angles = cast(list[Angle], item)
             return list_of_angles
@@ -33,8 +33,8 @@ class AngleSequence:
     def __add__(self, other: object) -> NotImplementedType | Self:
         if isinstance(other, Angle):
             cls = type(self)
-            angle = Angle.from_radians(self.sequence.common_difference)
-            start = Angle.from_radians(self.sequence.initial_term + other.radians)
+            angle = Angle(radians=self.sequence.common_difference)
+            start = Angle(radians=self.sequence.initial_term + other.radians)
             return cls(angle=angle, start=start)
         return NotImplemented
 
