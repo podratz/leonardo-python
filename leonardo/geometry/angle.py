@@ -21,7 +21,7 @@ class Angle:
             case "radians":
                 self.fraction = value / math.tau
             case _:
-                raise ValueError("wrong key")
+                raise KeyError("wrong key")
 
     @classmethod
     def zero(cls) -> Self:

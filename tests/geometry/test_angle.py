@@ -15,11 +15,14 @@ class TestAngle(unittest.TestCase):
         angle3 = Angle(radians=math.pi)
         self.assertAlmostEqual(angle3.fraction, 0.5)
 
-        empty_kwargs = {None}
-        self.assertRaises(ValueError, Angle.__init__, empty_kwargs)
+        empty_kwargs = {}
+        self.assertRaises(ValueError, Angle, **empty_kwargs)
 
         double_kwargs = {"param1": 1.0, "param2": 2.0}
-        self.assertRaises(ValueError, Angle.__init__, double_kwargs)
+        self.assertRaises(ValueError, Angle, **double_kwargs)
+
+        wrong_kwargs = {"other_measure": 3.0}
+        self.assertRaises(KeyError, Angle, **wrong_kwargs)
 
     def test_radians(self) -> None:
         angle0 = Angle(fraction=0)
