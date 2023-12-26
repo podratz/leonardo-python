@@ -8,7 +8,7 @@ from typing import Self
 class Angle:
     fraction: float = 0
 
-    def __init__(self, **kwargs) -> None:
+    def __init__(self, **kwargs: float) -> None:
         if len(kwargs) != 1:
             raise ValueError("single argument expected")
 
