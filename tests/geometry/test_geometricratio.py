@@ -1,0 +1,37 @@
+import unittest
+
+from leonardo.geometry.geometricratio import GeometricRatio
+from leonardo.metals.gold import Gold
+
+
+class TestGeometricRatio(unittest.TestCase):
+    def setUp(self) -> None:
+        self.phi = float(Gold.ratio())
+
+    def test_ratio_default(self) -> None:
+        ratio = GeometricRatio()
+        self.assertEqual(ratio, 1)
+
+    def test_ratio_string_rounding(self) -> None:
+        ratio = GeometricRatio(self.phi)
+        ratio_str = str(ratio)
+        self.assertEqual(ratio_str, "1.618")
+
+    def test_ratio_float_conversion(self) -> None:
+        ratio = GeometricRatio(self.phi)
+        self.assertEqual(float(ratio), self.phi)
+
+    def test_ratio_int_conversion(self) -> None:
+        ratio = GeometricRatio(self.phi)
+        ratio_rounded = int(ratio)
+        self.assertEqual(ratio_rounded, 1)
+
+    def test_pow(self) -> None:
+        ratio = GeometricRatio(self.phi)
+        ratio_pow = ratio**2
+        phi_pow = self.phi**2
+        self.assertEqual(ratio_pow, phi_pow)
+
+
+if __name__ == "__main__":
+    unittest.main()

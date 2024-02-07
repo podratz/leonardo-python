@@ -1,5 +1,6 @@
 import math
 
+from ..geometry import GeometricRatio
 from .metal import Metal
 
 
@@ -7,6 +8,6 @@ class Silver(Metal):
     """A class to work with the silver ratio."""
 
     @classmethod
-    def ratio(cls) -> float:
+    def ratio(cls) -> GeometricRatio:
         """The silver ratio which approximates to 2.414."""
-        return (2 + math.sqrt(8)) / 2
+        return GeometricRatio((2 + math.sqrt(8)) / 2)

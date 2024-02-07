@@ -2,11 +2,13 @@ import itertools
 from types import NotImplementedType
 from typing import cast, overload
 
+from ..geometry import GeometricRatio
+
 
 class GeometricSequence:
     """A geometric sequence."""
 
-    def __init__(self, common_ratio: float, scale_factor: float = 1.0):
+    def __init__(self, common_ratio: GeometricRatio, scale_factor: float = 1.0):
         """Create a geometric sequence from a common ratio and a scale factor."""
         self.common_ratio = common_ratio
         self.scale_factor = scale_factor

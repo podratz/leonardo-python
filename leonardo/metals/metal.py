@@ -5,7 +5,7 @@ from functools import total_ordering
 from types import NotImplementedType
 from typing import Self, overload
 
-from ..geometry import Angle
+from ..geometry import Angle, GeometricRatio
 from ..sequences import AngleSequence, GeometricSequence
 
 
@@ -21,7 +21,7 @@ class Metal(ABC):
 
     @classmethod
     @abstractmethod
-    def ratio(cls) -> float:
+    def ratio(cls) -> GeometricRatio:
         """The metallic ratio."""
         raise NotImplementedError
 
@@ -57,7 +57,7 @@ class Metal(ABC):
     @classmethod
     def angle(cls) -> Angle:
         """The metallic angle."""
-        fraction = 1 / (1 + cls.ratio())
+        fraction = 1 / (1 + float(cls.ratio()))
         return Angle(fraction=fraction)
 
     @classmethod
