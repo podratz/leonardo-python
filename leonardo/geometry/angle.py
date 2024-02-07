@@ -10,7 +10,7 @@ class Angle:
 
     def __init__(self, **kwargs: float) -> None:
         if len(kwargs) != 1:
-            raise ValueError("single argument expected")
+            raise TypeError(f"Angle() takes exactly one argument ({len(kwargs)} given)")
 
         key, value = kwargs.popitem()
         match key:

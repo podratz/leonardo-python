@@ -16,10 +16,10 @@ class TestAngle(unittest.TestCase):
         self.assertAlmostEqual(angle3.fraction, 0.5)
 
         empty_kwargs = {}
-        self.assertRaises(ValueError, Angle, **empty_kwargs)
+        self.assertRaises(TypeError, Angle, **empty_kwargs)
 
         double_kwargs = {"param1": 1.0, "param2": 2.0}
-        self.assertRaises(ValueError, Angle, **double_kwargs)
+        self.assertRaises(TypeError, Angle, **double_kwargs)
 
         wrong_kwargs = {"other_measure": 3.0}
         self.assertRaises(KeyError, Angle, **wrong_kwargs)
