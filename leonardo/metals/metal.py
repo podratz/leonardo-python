@@ -22,7 +22,7 @@ class Metal(ABC):
     @classmethod
     @abstractmethod
     def ratio(cls) -> GeometricRatio:
-        """The metallic ratio."""
+        """The metal's underlying geometric ratio."""
         raise NotImplementedError
 
     @classmethod
