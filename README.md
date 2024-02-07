@@ -11,14 +11,14 @@ A python library for working with the metallic means.
 from leonardo import *
 
 
-Gold.ratio
-# 1.618033988749895
+str(Gold.ratio)
+# 1.618
 
-Silver.ratio
-# 2.414213562373095
+str(Silver.ratio)
+# 2.414
 
-Bronce.ratio
-# 3.302775637731995
+str(Bronce.ratio)
+# 3.303
 
 str(Gold.angle)
 # '137.51°'
