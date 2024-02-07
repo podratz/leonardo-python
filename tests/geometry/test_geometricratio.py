@@ -32,6 +32,11 @@ class TestGeometricRatio(unittest.TestCase):
         phi_pow = self.phi**2
         self.assertEqual(ratio_pow, phi_pow)
 
+    def test_repr_float(self) -> None:
+        ratio = GeometricRatio(self.phi)
+        ratio_repr = repr(ratio)
+        self.assertEqual(ratio_repr, repr(self.phi))
+
 
 if __name__ == "__main__":
     unittest.main()

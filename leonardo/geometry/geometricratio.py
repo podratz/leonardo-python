@@ -1,11 +1,8 @@
-from dataclasses import dataclass
-
-
-@dataclass
 class GeometricRatio:
     """Wrapper that provides more appropriate interface to geometric ratios."""
 
-    value: int | float = 1
+    def __init__(self, value: int | float = 1):
+        self.value = value
 
     def __eq__(self, value: object) -> bool:
         return self.value == value
@@ -21,3 +18,6 @@ class GeometricRatio:
 
     def __pow__(self, exp: int) -> float:
         return self.value**exp
+
+    def __repr__(self) -> str:
+        return repr(self.value)
