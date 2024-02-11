@@ -1,14 +1,30 @@
 # Leonardo
 
-A python library for working with the metallic means.
+Leonardo is a Python library that facilitates computation involving aestetic
+numeric relationships. At its core, it entails a façade to mathematical objects
+that are derived from the golden ratio, the silver ratio, or the bronce ratio.
+It aims to make visual computing easier by abstracting from the algebraic forms,
+allowing us programmers to reason about geometry at a higher order.
 
-## Examples
+## How to Use It
 
-### Working with Constants
+### Constants
+
+Leonardo embraces transcendental numbers that have aesthetic significance. These
+numbers are made accessible as constants in denoted namespaces. Each constant is
+foundational to a set of higher order concepts later explained.
+
+#### Ratios
+
+The geometric mean between any two numbers is a ratio. It establishes a
+relationship that carries aestetic qualities. The deliberate choice of a ratio,
+given some number, introduces a distinct aesthetic flavor to the composition
+with that number. The golden ratio is abundant in structures of natural growth,
+such as the human physis.
 
 ```python
 
-from leonardo import *
+from leonardo import Bronce, Silver, Gold
 
 
 str(Gold.ratio)
@@ -19,6 +35,22 @@ str(Silver.ratio)
 
 str(Bronce.ratio)
 # 3.303
+
+```
+
+I invite you to explore these relationships and their flavors
+in your compositions.
+
+#### Angles
+
+By applying the ratios to circles, we get a set of angles that carry related
+aesthetic properties and allow for other kinds of composition. The rotation by
+the golden angle constitutes a recurring principle in nature, found in the
+branching of trees, flower petals, and macroscopic structures of galaxies.
+
+```python
+
+from leonardo import Bronce, Silver, Gold
 
 str(Gold.angle)
 # '137.51°'
