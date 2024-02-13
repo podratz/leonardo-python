@@ -7,6 +7,7 @@ from typing import Self, overload
 
 from ..geometry import Angle, GeometricRatio
 from ..sequences import AngleSequence, GeometricSequence
+from ..shapes import Rectangle
 
 
 @total_ordering
@@ -129,6 +130,11 @@ class Metal(ABC):
         metal = copy(self)
         metal.magnitude -= self[-n]
         return metal
+
+    # Shapes
+
+    # def rectangle(self) -> Rectangle:
+    #     return Rectangle()
 
     # Coalescing
 
