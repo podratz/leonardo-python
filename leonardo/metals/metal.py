@@ -133,8 +133,8 @@ class Metal(ABC):
 
     # Shapes
 
-    # def rectangle(self) -> Rectangle:
-    #     return Rectangle()
+    def rectangle(self) -> Rectangle:
+        return Rectangle(width=next(self).magnitude, height=self.magnitude)
 
     # Coalescing
 
