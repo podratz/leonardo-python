@@ -16,6 +16,12 @@ class TestRectangle(unittest.TestCase):
         rect2 = Rectangle(10, 20)
         self.assertEqual(rect1, rect2)
 
+    def test_restore_rectangle_from_repr(self) -> None:
+        rect = Rectangle(10, 20)
+        repr_str = repr(rect)
+        rect2 = eval(repr_str)
+        self.assertEqual(rect, rect2)
+
 
 if __name__ == "__main__":
     unittest.main()

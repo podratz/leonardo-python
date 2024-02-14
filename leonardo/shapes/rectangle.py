@@ -8,3 +8,6 @@ class Rectangle:
         if not isinstance(other, Rectangle):
             return NotImplemented
         return self.width == other.width and self.height == other.height
+
+    def __repr__(self) -> str:
+        return f"Rectangle(width={self.width}, height={self.height})"
