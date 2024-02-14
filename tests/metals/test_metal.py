@@ -11,9 +11,19 @@ class DoubleMetal(Metal):
 
 
 class TestMetal(unittest.TestCase):
-    def test_metal_instantiates(self) -> None:
+    # Init
+
+    def test_default_init_is_1(self) -> None:
         d = DoubleMetal()
-        self.assertIsNot(d, None)
+        self.assertEqual(d.magnitude, 1)
+
+    def test_init_with_0(self) -> None:
+        d = DoubleMetal(0)
+        self.assertEqual(d.magnitude, 0)
+
+    def test_init_with_negative_3_point_5(self) -> None:
+        d = DoubleMetal(-3.5)
+        self.assertEqual(d.magnitude, -3.5)
 
     # Rectangle
 
@@ -29,11 +39,11 @@ class TestMetal(unittest.TestCase):
         self.assertEqual(d1_rectangle.height, 1)
         self.assertEqual(d1_rectangle.width, 2)
 
-    def test_metallic_rectangle_of_height_negative_1_point_5(self) -> None:
-        dneg15 = DoubleMetal(-1.5)
+    def test_metallic_rectangle_of_height_negative_3_point_5(self) -> None:
+        dneg15 = DoubleMetal(-3.5)
         dneg15_rectangle = dneg15.rectangle()
-        self.assertEqual(dneg15_rectangle.height, -1.5)
-        self.assertEqual(dneg15_rectangle.width, -3)
+        self.assertEqual(dneg15_rectangle.height, -3.5)
+        self.assertEqual(dneg15_rectangle.width, -7)
 
 
 if __name__ == "__main__":
