@@ -1,10 +1,10 @@
 import unittest
 
-from leonardo.sequences.arithmeticsequence import ArithmeticSequence
+from leonardo.sequences.arithmetic_sequence import ArithmeticSequence
 
 
 class TestArithmeticsequence(unittest.TestCase):
-    def test_arithmeticsequence(self) -> None:
+    def test_arithmetic_sequence(self) -> None:
         arithmeticsequence = ArithmeticSequence()
         self.assertIsNot(arithmeticsequence, None)
 

@@ -1,4 +1,4 @@
 from .angle import Angle
-from .geometricratio import GeometricRatio
+from .geometric_ratio import GeometricRatio
 
 __all__ = ["Angle", "GeometricRatio"]

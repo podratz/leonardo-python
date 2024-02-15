@@ -2,7 +2,7 @@ from types import NotImplementedType
 from typing import Self, cast, overload
 
 from ..geometric_primitives import Angle
-from .arithmeticsequence import ArithmeticSequence
+from .arithmetic_sequence import ArithmeticSequence
 
 
 class AngleSequence:
