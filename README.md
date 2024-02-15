@@ -37,7 +37,7 @@ such as the human physis.
 
 ```python
 
-from leonardo import Bronce, Silver, Gold
+from leonardo import Gold, Silver, Bronce
 
 
 str(Gold.ratio)
@@ -63,7 +63,8 @@ branching of trees, flower petals, and macroscopic structures of galaxies.
 
 ```python
 
-from leonardo import Bronce, Silver, Gold
+from leonardo import Gold, Silver, Bronce
+
 
 str(Gold.angle)
 # '137.51°'
@@ -114,6 +115,7 @@ A golden angle is an object with common units as properties.
 ```python
 
 from leonardo import Gold
+
 
 Gold.angle
 # Angle(fraction=0.38196601125010515)
