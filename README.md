@@ -96,11 +96,14 @@ g[-2:3] # prints the neighborhood of g
 #  2.618033988749895]
 
 # setting up fontsizes as a graphic designer
-[body, subheadline, headline] = g17[-1:2]
+body, subheadline, headline = g17[-1:2]
+
 body 
 # 10.506577808748212
+
 subheadline
 # 17.0
+
 headline
 # 27.50657780874821
 
