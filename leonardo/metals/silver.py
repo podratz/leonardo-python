@@ -1,6 +1,6 @@
 import math
 
-from ..geometry import GeometricRatio
+from ..geometric_primitives import GeometricRatio
 from .metal import Metal
 
 

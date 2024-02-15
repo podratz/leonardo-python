@@ -1,6 +1,6 @@
 import unittest
 
-from leonardo.geometry.geometricratio import GeometricRatio
+from leonardo.geometric_primitives.geometricratio import GeometricRatio
 from leonardo.metals.gold import Gold
 
 

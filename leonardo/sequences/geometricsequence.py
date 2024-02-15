@@ -2,7 +2,7 @@ import itertools
 from types import NotImplementedType
 from typing import cast, overload
 
-from ..geometry import GeometricRatio
+from ..geometric_primitives import GeometricRatio
 
 
 class GeometricSequence:

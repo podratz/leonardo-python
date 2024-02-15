@@ -5,7 +5,7 @@ from functools import total_ordering
 from types import NotImplementedType
 from typing import Self, overload
 
-from ..geometry import Angle, GeometricRatio
+from ..geometric_primitives import Angle, GeometricRatio
 from ..sequences import AngleSequence, GeometricSequence
 from ..shapes import Rectangle
 

@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from leonardo.geometry import Angle
+from leonardo.geometric_primitives import Angle
 
 
 class TestAngle(unittest.TestCase):
