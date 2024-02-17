@@ -1,9 +1,10 @@
 import math
 from abc import ABC, abstractmethod
+from collections.abc import Iterable, Iterator
 from copy import Error, copy
 from functools import total_ordering
 from types import NotImplementedType
-from typing import Self, overload
+from typing import Generator, Self, overload
 
 from ..geometric_primitives import Angle, GeometricRatio
 from ..sequences import AngleSequence, GeometricSequence
@@ -135,6 +136,11 @@ class Metal(ABC):
 
     def rectangle(self) -> Rectangle:
         return Rectangle(width=next(self).magnitude, height=self.magnitude)
+
+    @property
+    def rectangles(self) -> Generator[Rectangle, None, None]:
+        seq = GeometricSequence(self.ratio(), self.magnitude)
+        return (Rectangle(height=self.magnitude, width=width) for width in seq)
 
     # Coalescing
 

@@ -45,6 +45,13 @@ class TestMetal(unittest.TestCase):
         self.assertEqual(dneg15_rectangle.height, -3.5)
         self.assertEqual(dneg15_rectangle.width, -7)
 
+    def test_get_metallic_rectangles(self) -> None:
+        d = DoubleMetal()
+        rects = d.rectangles[:3]
+        self.assertEqual(rects[0].width, rects[0].height)
+        self.assertEqual(rects[1].width, rects[0].height * 2)
+        self.assertEqual(rects[2].width, rects[0].height * 4)
+
 
 if __name__ == "__main__":
     unittest.main()
