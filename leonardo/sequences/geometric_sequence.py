@@ -1,6 +1,6 @@
 import itertools
 from types import NotImplementedType
-from typing import cast, overload
+from typing import Generator, cast, overload
 
 from ..geometric_primitives import GeometricRatio
 
@@ -18,10 +18,12 @@ class GeometricSequence:
         ...
 
     @overload
-    def __getitem__(self, subscript: slice) -> list[float]:
+    def __getitem__(self, subscript: slice) -> Generator[float, None, None]:
         ...
 
-    def __getitem__(self, subscript: int | slice) -> float | list[float]:
+    def __getitem__(
+        self, subscript: int | slice
+    ) -> float | Generator[float, None, None]:
         """Return the element at the given index, or the subsequence bound by the given slice."""
         if isinstance(subscript, int):
             n = cast(int, subscript)
@@ -40,7 +42,7 @@ class GeometricSequence:
                 raise ValueError("slice step cannot be zero")
             step = s.step or 1
 
-            sequence = [self[index] for index in range(start, stop, step)]
+            sequence = (self[index] for index in range(start, stop, step))
             return sequence
 
     def __iter__(self):
